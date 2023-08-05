@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Howard's Blog</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="index.html">Howard Peng</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="articles.html">Articles</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('assets/img/article2-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>拜占庭問題與容錯算法</h1>
+                            <h2 class="subheading">透過工作量證明機制 PoW ，節點使用算力去證明自己沒有惡意</h2>
+                            <span class="meta">
+                                Posted by
+                                <a href="#!">Howard Peng</a>
+                                on November 2, 2020
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <h2 class="section-heading">簡介</h2>
+                        <p>拜占庭問題（Byzantine Problem）又叫拜占庭將軍（Byzantine Generals Problem）問題，討論的是允許存在少數節點失效（消息可能被偽造）場景下的如何達成共識問題。拜占庭容錯（Byzantine Fault Tolerant，BFT）討論的是容忍拜占庭錯誤的共識算法。</p>
+                        <h2 class="section-heading">兩將軍問題</h2>
+                        <p>拜占庭問題之前，學術界就已經存在兩將軍問題的討論（《Some constraints and tradeoffs in the design of network communications》，1975 年）：兩個將軍要通過信使來達成進攻還是撤退的約定，但信使可能迷路或被敵軍阻攔（消息丟失或偽造），如何達成共識？根據 FLP 不可能原理，這個問題無通用解。</p>
+                        <p>拜占庭是古代東羅馬帝國的首都，由於地域寬廣，守衛邊境的多個將軍（系統中的多個節點）需要通過信使來傳遞消息，達成某些一致決定。但由於將軍中可能存在叛徒（系統中節點出錯），這些叛徒將向不同的將軍發送不同的消息，試圖干擾共識的達成。這種情況十分類似於分佈式系統中多個節點達成共識的問題。</p>
+                        <p>拜占庭問題即討論在此情況下，如何讓忠誠的將軍們能達成行動的一致。</p>
+                        <h2 class="section-heading">問題解法</h2>
+                        <p>論文中指出，對於拜占庭問題來說，假如節點總數為N​，故障節點數為F ​，則當N>= 3F+1 ​ 時，問題才能有解，由 BFT 算法進行保證。</p>
+                        <p>例如，N=3，F=1​時。</p>
+                        <p>若提案人不是叛變者，提案人發送一個提案出來，收到的叛變者可以宣稱收到的是相反的命令。則對於第三個人（忠誠者）會收到兩個相反的消息，無法判斷誰是叛變者，則系統無法達到一致。</p>
+                        <p>若提案人是叛變者，發送兩個相反的提案分別給另外兩人，另外兩人都收到兩個相反的消息，無法判斷究竟誰是叛變者，則系統無法達到一致。</p>
+                        <p>更一般的，當提案人不是叛變者，提案人提出提案信號 1，則對於合作者來看，系統中會有 N-F​ 份確定的信號 1，和 F​ 份不確定的信號（可能為 0 或 1，假設叛變者會盡量干擾一致的達成），N-F>F​，即 N>2F​ 情況下才能達成一致。</p>
+                        <p>當提案人是叛變者，會盡量發送相反的提案給 N-F​ 個合作者，從收到 1 的合作者看來，系統中會存在 (N-F)/2​ 個信號 1，以及 (N-F)/2​ 個信號 0；從收到 0 的合作者看來，系統中會存在 (N-F)/2​ 個信號0，以及 (N-F)/2​ 個信號 1；</p>
+                        <p>另外還存在 F-1​ 個不確定的信號。合作者要想達成一致，必須進一步的對所獲得的消息進行判定，詢問其他人某個被懷疑對象的消息值，並通過取多數來作為被懷疑者的信號值。這個過程可以進一步遞歸下去。</p>
+                        <p>Leslie Lamport 等人在論文《Reaching agreement in the presence of faults》中證明，當叛變者不超過 1/3 時，存在有效的拜占庭容錯算法（最壞需要 F+1 ​輪交互）。反之，如果叛變者過多，超過1/3，則無法保證一定能達到一致結果。</p>
+                        <h2 class="section-heading">那麼，當存在多於 1/3 的叛變者時，有沒有可能存在解決方案呢？</h2>
+                        <p>設想F​個叛變者和L​個忠誠者，叛變者故意使壞，可以給出錯誤的結果，也可以不響應。某個時候F​個叛變者都不響應，則L​個忠誠者取多數既能得到正確結果。當F​個叛變者都給出一個惡意的提案，並且L​個忠誠者中有F​個離線時，剩下的 L-F​ 個忠誠者此時無法分別是否混入了叛變者，仍然要確保取多數能得到正確結果，因此，L-F>F​，即 L>2F​ 或 ​N-F>3F，所以系統整體規模 N​ 要大於 3F​。</p>
+                        <p>能確保達成共識的拜占庭系統節點數至少為4，此時最多允許出現1個壞的節點。</p>
+                        <h2 class="section-heading">拜占庭容錯算法</h2>
+                        <p>拜占庭容錯算法（Byzantine Fault Tolerant）是面向拜占庭問題的容錯算法，解決的是在網路通信可靠，但節點可能故障和作惡情況下如何達成共識。</p>
+                        <p>拜占庭容錯算法最早的討論可以追溯到 Leslie Lamport 等人 1982 年 發表的論文《The Byzantine Generals Problem》，之後出現了大量的改進工作，代表性成果包括《Optimal Asynchronous Byzantine Agreement》（1992 年）、《Fully Polynomial Byzantine Agreement for n>3t Processors in t+1 Rounds》（1998 年）等。長期以來，拜占庭問題的解決方案都存在運行過慢，或複雜度過高的問題，直到 “實用拜占庭容錯算法”（Practical Byzantine Fault Tolerance，PBFT） 算法的提出。</p>
+                        <p>1999 年，這一算法由 Castro 和 Liskov 於論文《Practical Byzantine Fault Tolerance and Proactive Recovery》中提出。該算法基於前人工作（特別是 Paxos 相關算法，因此也被稱為 Byzantine Paxos）進行了優化，首次將拜占庭容錯算法複雜度從指數級降低到了多項式級，目前已得到廣泛應用。其可以在惡意節點不超過總數 1/3 的情況下同時保證 Safety 和 Liveness。</p>
+                        <p>PBFT 算法採用密碼學相關技術（RSA 簽名算法、消息驗證編碼和摘要）確保消息傳遞過程無法被篡改和破壞。</p>
+                        <h2 class="section-heading">算法整體的基本過程如下：</h2>
+                        <br>
+                        <ul>
+                            <li>首先，通過輪換或隨機算法選出某個節點為主節點，此後只要主節點不切換，則稱為一個視圖（View）。</li>
+                            <li>在某個視圖中，客戶端將請求 <b>&lt;REQUEST,operation,timestamp,client&gt;</b> 發送給主節點，主節點負責廣播請求到所有其它副本節點。</li>
+                            <li>所有節點處理完成請求，將處理結果 <b>&lt;REPLY,view,timestamp,client,id_node,response&gt;</b> 返回給客戶端。客戶端檢查是否收到了至少 f+1 個來自不同節點的相同結果，作為最終結果。</li>
+                        </ul>
+                        <p>主節點廣播過程包括三個階段的處理：預準備（Pre-Prepare）、準備（Prepare）和提交（Commit）。預準備和準備階段確保在同一個視圖內請求發送的順序正確；準備和提交階段則確保在不同視圖之間的確認請求是保序的。</p>
+                        <ul>
+                            <li>預準備階段：主節點為從客戶端收到的請求分配提案編號，然後發出預準備消息 <b>&lt;&lt;PRE-PREPARE,view,n,digest&gt;,message&gt;</b> 給各副本節點，其中 message 是客戶端的請求消息，digest 是消息的摘要。</li>
+                            <li>準備階段：副本節點收到預準備消息後，檢查消息。如消息合法，則向其它節點發送準備消息 <b>&lt;PREPARE,view,n,digest,id&gt;</b>，帶上自己的 id 信息，同時接收來自其它節點的準備消息。收到準備消息的節點對消息同樣進行合法性檢查。驗證通過則把這個準備消息寫入消息日誌中。集齊至少 2f+1 個驗證過的消息才進入準備狀態。</li>
+                        </ul>
+                        <p>提交階段：廣播 commit 消息，告訴其它節點某個提案 n 在視圖 v 裡已經處於準備狀態。如果集齊至少 2f+1 個驗證過的 commit 消息，則說明提案通過。</p>
+                        <p>具體實現上還包括視圖切換、checkpoint 等機制。拜占庭容錯類的算法因為要考慮最惡意的存在“搗亂”者的情況，在大規模場景下共識性能往往會受到影響。</p>
+                        <h2 class="section-heading">新的解決思路</h2>
+                        <p>拜占庭問題之所以難解，在於任何時候系統中都可能存在多個提案（因為提案成本很低），並且在大規模場景下要完成最終確認的過程容易受干擾，難以達成共識。</p>
+                        <p>2017 年，MIT 計算機科學與人工智能實驗室（CSAIL）的Yossi Gilad 和Silvio Micali 等人在論文《Algorand: Scaling Byzantine Agreements for Cryptocurrencies》中針對PBFT 算法在很多節點情況下性能不佳的問題，提出先選出少量記賬節點，然後再利用可驗證隨機函數（Verifiable Random Function，VRF）來隨機選取領導節點，避免全網直接做共識，將PBFT 算法擴展到了支持較大規模的應用場景。</p>
+                        <p>比特幣的區塊鏈網路在設計時使用了PoW（Proof of Work） 的機率型算法思路，從如下兩個角度解決大規模場景下的拜占庭容錯問題。</p>
+                        <p>首先，限制一段時間內整個網路中出現提案的個數（通過工作量證明來增加提案成本）；其次是丟掉最終確認的約數，約定好始終沿著已知最長的鏈進行拓展。共識的最終確認是機率意義上的存在。這樣，即便有人試圖惡意破壞，也會付出相應的經濟代價（超過整體系統一半的工作量）。</p>
+                        <p>後來的各種PoX 系列算法，也都是沿著這個思路進行改進，採用經濟上的懲罰來制約破壞者。</p>
+                        <p>
+                            <a href="https://howardpeng911.medium.com/%E6%8B%9C%E5%8D%A0%E5%BA%AD%E5%95%8F%E9%A1%8C%E8%88%87%E5%AE%B9%E9%8C%AF%E7%AE%97%E6%B3%95-4d446f26b4d3">Medium Version</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/sheng-hau-peng/">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://github.com/howard0911">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.facebook.com/howto0911/">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.instagram.com/howto_0911/">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://medium.com/@howardpeng911">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-medium fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; Howard's Blog 2023</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
