@@ -111,20 +111,20 @@
                         <p>乘積恆定函數做市（CFMM）是最流行的 AMM 系列。當交易者希望將代幣 A 換成代幣 B 時，這種 AMM 會使用乘積恆定函數作爲其定價機制。在這種情況下，術語 “乘積恆定函數“ 指的是資產對的乘積必須在發生任意交易時都保持不變。這也是 Uniswap 所用的做市機制。以下就介紹AMM 的發展。</p>
                         <p><b>1. Uniswap (乘積固定)</b></p>
                         <p>Uniswap 利用乘積恆定函數為資產定價，</p>
-                        <img src='assets/img/article10-uniswap.png' width="750px" height="90px">
+                        <img src='assets/img/article10-uniswap.png' width="400px" height="45px">
                         <p>舉例說明，假設 ETH/DAI 池包含 100 ETH （x 的值）和 10,000 DAI （y 的值）。在這個例子中，Uniswap 將這兩個數量相乘，得到 k 的值爲 1,000,000。現在的目標是保持 k 值恆定，而不考慮對流動性池的交易量。做到這一點的唯一方法是，x 和 y 的數量反向變化。也就是說，當有人從池中取出 ETH，必須補充 DAI 進入池子，以求乘積固定。</p>
                         <p>利用乘積固定的公式好處是，它確保了當任何一種資產的價格接近無窮大時，總會有流動性。但是缺點就是幣種之間關係是漸進式的，當花費的代幣數量增加，收到的代幣數量會變小。</p>
                         <p><b>2. Balancer (一般化 Uniswap)</b></p>
                         <p>Balancer 的 AMM 一般化了 Uniswap 的乘積恆定功能，這個 AMM 的核心是價值函數，它強制規定資產池中的資產餘額的權重次冪的乘積應始終保持不變。</p>
-                        <img src='assets/img/article10-Balancer.png' width="750px" height="130px">
+                        <img src='assets/img/article10-balancer.png' width="400px" height="65px">
                         <p>在這個公式中，t 代表池中的資產的種類數，Bt 是資產數量，Wt 是資產權重。它推廣了原本 Uniswap 只能兩個資產互換的情況。Balancer 的目標是在保持資產權重不變的情況下，只改變資產餘額，從而保持 k 不變。</p>
                         <p><b>3. Curve (總和固定)</b></p>
                         <p>Uniswap 和 Balancer 主要是針對波動和價格不穩定的代幣的交易。然而，當處理那些想要互相保持穩定的資產之間的交易時，低價格滑點是最重要的。之前迭代的各種 AMMs 固有曲率就有問題了，因爲交易規模越大，滑點就越大。解決價格滑點問題的一個方法是，使用常數和函數作爲 AMM 的內部交易機制。</p>
-                        <img src='assets/img/article10-curve1.png' width="750px" height="100px">
+                        <img src='assets/img/article10-curve1.png' width="400px" height="50px">
                         <p>雖然解決滑點問題，但它也使得原本好的性質不見了，即當任何一種資產從池子中流出時，池子總還會有流動性，而另一種資產的數量趨於無窮大。</p>
                         <p>爲了解決這些問題，Curve 創造了一種混合 AMM：在曲線的平衡點附近建立一條相對平坦的曲線，類似於恆定總和函數，以保持價格相對穩定，同時使兩端更加傾斜，類似於乘積恆定函數，因此在曲線的每個點都有流動性。Curve 的函數在中間表現爲恆定和函數，但隨著 x 和 y 的值的變大，則變爲乘積恆定函數。這種形狀使曲線中間段的價格保持穩定，同時又能在兩端提供流動性。</p>
                         <p>Curve Finance是需要找到兩種AMM類型之間的一個恆等式，既能創造比較好的流動性，有一定的價格自調整能力，又能在給定的交易範圍內降低滑點，達到的效果如下圖所示</p>
-                        <img src='assets/img/article10-curve2.png' width="650px" height="400px" title="資料來源：StableSwap白皮書">
+                        <img src='assets/img/article10-curve2.png' width="600px" height="400px" title="資料來源：StableSwap白皮書">
                         <p>上圖中的藍色曲線即代表穩定幣之間交易的AMM曲線，和Uniswap這種乘積恆等式的AMM設計來比，在預期的穩定價格附近有比較小的滑點，和恆定總和的AMM設計相比，在某一種代幣餘額產生較大偏離時，交易價格會發生比較大的變化，促使流動性提供者或者套利者通過市場行為恢復流動性池中代幣餘額的均衡。</p>
                         <h2 class="section-heading">結語</h2>
                         <p>區塊鏈技術在過去幾年中迅速崛起，且以去中心化金融 (DeFi) 發展的最值得注目。流動性挖礦(liquidity mining)，亦稱為自動造市機制(AMM; automatic market making)是最被為注目的特色之一，幾乎成為 DeFi 項目中的基礎功能，Uniswap 提出恆定乘積公式成為指標性的 AMM 造市機制，目前仍是最大的去中心化交易協議。</p>
