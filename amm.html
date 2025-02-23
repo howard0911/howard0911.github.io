@@ -40,7 +40,7 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="post-heading">
-                            <h1>從 Uniswap 出發的 AMM 機制解析</h1>
+                            <h1>從 Uniswap 出發的 AMM 機制解析 - Analysis of AMM mechanism starting from Uniswap</h1>
                             <h2 class="subheading">以太坊上的去中心化交易所協定，採用恆定乘積做市商AMM</h2>
                             <span class="meta">
                                 Posted by
@@ -130,9 +130,82 @@
                         <p>區塊鏈技術在過去幾年中迅速崛起，且以去中心化金融 (DeFi) 發展的最值得注目。流動性挖礦(liquidity mining)，亦稱為自動造市機制(AMM; automatic market making)是最被為注目的特色之一，幾乎成為 DeFi 項目中的基礎功能，Uniswap 提出恆定乘積公式成為指標性的 AMM 造市機制，目前仍是最大的去中心化交易協議。</p>
 
 
+
+                        <h2 class="section-heading">Preface</h2>
+                        <p>In the previous article, I introduced the development of the DeFi ecosystem. This time, I will provide a detailed overview of the decentralized exchange protocol "Uniswap" on Ethereum, its different versions, and the problems it aims to solve. Additionally, I will explain the AMM mechanism and Uniswap's extensions.</p>
+
+                        <h2 class="section-heading">What is AMM (Automated Market Maker)?</h2>
+                        <p>AMM stands for Automated Market Maker, a mechanism that replaces the traditional order book system with liquidity pools (LPs). This allows traders to complete transactions without needing a counterparty order, significantly improving trading efficiency. Liquidity providers can earn transaction fees and governance token rewards, addressing issues such as low liquidity and high slippage in on-chain transactions. AMMs have become widely adopted in DeFi protocols, playing a crucial role in the rise of <a href="https://to-coin.com/what-is-defi/">DeFi</a> in 2021.</p>
+                        <p>The concept of AMMs was first proposed in the early 1990s by Shearson Lehman Brothers. In 2017, Ethereum co-founder Vitalik Buterin suggested that an automated market-making system could help resolve the inefficiencies of on-chain trading. When Uniswap launched in 2018, it became the first decentralized exchange (DEX) to implement an AMM model. The AMM mechanism has since been widely adopted in lending protocols like <a href="https://to-coin.com/what-is-comp/">Compound</a>, allowing depositors to provide funds directly to LPs while borrowers take loans from them—eliminating the need for order book-based transactions.</p>
+
+                        <h2 class="section-heading">Uniswap and the Constant Product Formula</h2>
+                        <p>Uniswap is a decentralized exchange operating on the Ethereum blockchain, enabling fast swaps between ETH and tokens or between different tokens. Its key feature is that it does not rely on an order book system—prices are automatically adjusted based on market demand.</p>
+                        <p>Here are some notable features of Uniswap:</p>
+                        <ol>
+                            <li><b>Ease of Use:</b> The interface is user-friendly. To trade on Uniswap, users simply select the tokens they want to swap and input the amount before clicking "Swap." Once the transaction is confirmed on-chain, the tokens are received instantly.</li>
+                            <li><b>Gas Efficiency:</b> According to its whitepaper, Uniswap consumes less gas than other major decentralized exchanges on Ethereum, such as Bancor and EtherDelta. This is because Uniswap eliminates the need for an order book, reducing computational overhead.</li>
+                            <li><b>Permissionless Listing:</b> Uniswap allows anyone to list a token without restrictions. Users can create a new token trading pair by executing a `createExchange` transaction. Once listed, no one can force its removal.</li>
+                        </ol>
+                        <p>Since Uniswap does not use an order book, it relies on an algorithm to determine asset prices and quantities automatically. This algorithm is known as the "constant product formula."</p>
+                        <p>The formula is straightforward: <b>x * y = k</b>. Let x and y represent the quantities of two assets (X and Y) in a liquidity pool. Their product remains constant (k), determined by the initial liquidity added to the pool.</p>
+                        <p>Thus, the amount of token Y received for swapping ∆x of token X—or vice versa—is calculated based on the formula: (x+∆x)(y+ ∆y) = k. The exchange rate is derived from the ratio of ∆x to ∆y.</p>
+                        <p>The price elasticity (Elasticity) is given by:</p>
+                        <img src='assets/img/article10-elasticity.png' width="550px" height="400px">
+                        <p>Let ∆x/x = Ex, then Ey = -Ex /(1+Ex). To minimize slippage, it is necessary to avoid Ex >>1 and Ey >>1.</p>
+                        <p>Every Uniswap transaction incurs a 0.3% fee, distributed to liquidity providers. However, when the liquidity pool is large, the impact of these fees on k is minimal.</p>
+
+                        <h2 class="section-heading">Uniswap V1, V2, V3</h2>
+                        <p>Although Uniswap was a groundbreaking innovation, Uniswap V1 had limitations. It faced issues such as Ethereum's scalability constraints and susceptibility to price manipulation. In its early days, low liquidity led to high price volatility.</p>
+
+                        <h3>Uniswap V2: Addressing V1 Limitations</h3>
+                        <p>Uniswap V2 introduced key improvements to mitigate Uniswap V1's constraints:</p>
+                        <ol>
+                            <li><b>Market Price Determination:</b> Token prices are determined at the end of the previous block, reducing opportunities for front-running attacks. An attacker would need to mine consecutive blocks to manipulate prices.</li>
+                            <li><b>Time-Weighted Average Price (TWAP):</b> Uniswap V2 introduced TWAP by averaging price changes over a time interval, making manipulation more costly.</li>
+                            <li><b>Expanded Liquidity Pools and Flash Swaps:</b> V2 added ERC20/ERC20 liquidity pools, eliminating the need for ETH as an intermediary.</li>
+                        </ol>
+
+                        <h2 class="section-heading">Uniswap V3</h2>
+                        <p>Compared to V2, Uniswap V3 focuses on capital efficiency by introducing:</p>
+                        <p><b>1. Concentrated Liquidity for Improved Capital Efficiency</b></p>
+                        <p>In Uniswap V2, liquidity is evenly distributed across all possible prices, meaning that much of the capital remains unused. V3 allows liquidity providers to allocate capital within specific price ranges, significantly improving efficiency.</p>
+                        <p>For stablecoins, most trades occur within a narrow price range (e.g., $0.99–$1.01 for DAI/USDC). With V2, only 0.5% of liquidity is actively utilized. V3 enables providers to concentrate their liquidity within this range, maximizing fee earnings.</p>
+
+                        <p><b>2. Granular Control Over Liquidity Positions</b></p>
+                        <p>Uniswap V3 introduces "granular liquidity control," allowing LPs to concentrate liquidity in the most active trading ranges.</p>
+                        <p>Compared to V2, this can achieve up to 4000x capital efficiency within a 0.1% price range and up to 20000x efficiency with 0.02% granularity.</p>
+
+                        <p><b>3. Flexible Fee Tiers & NFT Liquidity Positions</b></p>
+                        <p>V3 offers multiple fee tiers: 0.05%, 0.3%, and 1%, allowing LPs to choose pools based on their risk preferences.</p>
+                        <p>Instead of issuing fungible ERC-20 LP tokens, Uniswap V3 represents liquidity positions as non-fungible tokens (NFTs), providing more flexibility.</p>
+
+                        <p><b>4. Improved TWAP Oracle</b></p>
+                        <p>V3 reduces gas costs by ~50% compared to V2 while improving oracle efficiency, enabling price data retrieval over extended periods.</p>
+
+                        <h2 class="section-heading">Development of the Constant Function Market Maker (CFMM)</h2>
+                        <p>CFMM is the most widely adopted AMM model. When traders swap Token A for Token B, the protocol maintains a constant product of asset reserves to determine the exchange rate.</p>
+
+                        <p><b>1. Uniswap (Constant Product Function)</b></p>
+                        <img src='assets/img/article10-uniswap.png' width="400px" height="45px">
+                        <p>For example, if an ETH/DAI pool has 100 ETH and 10,000 DAI, Uniswap ensures that their product (1,000,000) remains constant. When ETH is withdrawn, an equivalent amount of DAI must be deposited to maintain balance.</p>
+
+                        <p><b>2. Balancer (Generalized Uniswap)</b></p>
+                        <img src='assets/img/article10-balancer.png' width="400px" height="65px">
+                        <p>Balancer extends Uniswap's model by allowing multiple assets with customizable weight distributions.</p>
+
+                        <p><b>3. Curve (Constant Sum Function)</b></p>
+                        <img src='assets/img/article10-curve1.png' width="400px" height="50px">
+                        <p>Curve optimizes AMMs for stablecoin trading by minimizing slippage near equilibrium prices while maintaining liquidity.</p>
+                        <img src='assets/img/article10-curve2.png' width="600px" height="400px" title="Source: StableSwap Whitepaper">
+
+                        <h2 class="section-heading">Conclusion</h2>
+                        <p>Blockchain technology has rapidly evolved, with DeFi emerging as one of its most significant innovations. AMMs, pioneered by Uniswap's constant product model, have become foundational to DeFi, making Uniswap the leading decentralized exchange protocol.</p>
+
+
                         <p>
                             <a href="https://howardpeng911.medium.com/%E5%BE%9E-uniswap-%E5%87%BA%E7%99%BC%E7%9A%84-amm-%E6%A9%9F%E5%88%B6%E8%A7%A3%E6%9E%90-ec640f01b1f1">Medium Version</a>
                         </p>
+                        English translate is generated by AI for reference.
                     </div>
                 </div>
             </div>
@@ -171,7 +244,7 @@
                             
                             
                         </ul>
-                        <div class="small text-center text-muted fst-italic">Copyright &copy; Howard's Blog 2024</div>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; Howard's Blog 2025</div>
                     </div>
                 </div>
             </div>
