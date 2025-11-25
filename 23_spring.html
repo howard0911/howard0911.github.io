@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -16,29 +16,13 @@
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body>
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="index.html">Howard Peng</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="articles.html">Articles</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Resume & Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <div data-include="partials/nav.html"></div>
         <!-- Page Header-->
         <header class="masthead" style="background-image: url('assets/img/article7-bg.jpg')">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div data-lang="zh">
                         <div class="post-heading">
                             <h1>美國統計碩士第三學期 23 Spring 就讀心得 - Statistics Master's Third Semester '23 Spring Study Experience</h1>
                             <h3 class="post-subtitle">一年回顧</h3>
@@ -118,6 +102,7 @@
                         <h2 class="section-heading">Final Thoughts</h2>
                         <p>This semester, I took courses from different departments, which exposed me to a variety of teaching styles. After completing my core courses, I appreciated the flexibility to choose subjects that interested me. It was a great experience learning from different professors with diverse approaches to teaching. While I still feel that I am far from my ultimate goal, I believe I am getting closer step by step.</p>
                         
+
                         <p>
                             <a href="https://howardpeng911.medium.com/%E7%BE%8E%E5%9C%8B%E7%B5%B1%E8%A8%88%E7%A2%A9%E5%A3%AB%E7%AC%AC%E4%B8%89%E5%AD%B8%E6%9C%9F-23-spring%E5%B0%B1%E8%AE%80%E5%BF%83%E5%BE%97-1c593bcce052">Medium Version</a>
                         </p>
@@ -126,48 +111,13 @@
                 </div>
             </div>
         </article>
-        <!-- Footer-->
-        <footer class="border-top">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
-                        <ul class="list-inline text-center">
-
-                            <li class="list-inline-item">
-                                <a href="https://www.linkedin.com/in/sheng-hau-peng/">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="https://github.com/howard0911">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="https://medium.com/@howardpeng911">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-medium fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                        </ul>
-                        <div class="small text-center text-muted fst-italic">Copyright &copy; Howard's Blog 2025</div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <div data-include="partials/footer.html"></div>
+        <script src="js/layout.js"></script>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
     </body>
 </html>
+
+

@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*!
 * Start Bootstrap - Clean Blog v6.0.8 (https://startbootstrap.com/theme/clean-blog)
 * Copyright 2013-2022 Start Bootstrap
@@ -595,7 +595,7 @@ progress {
   color: #6c757d;
 }
 .blockquote-footer::before {
-  content: "— ";
+  content: "??;
 }
 
 .img-fluid {
@@ -11149,7 +11149,7 @@ header.masthead .site-heading {
 header.masthead .page-heading h1, header.masthead .page-heading .h1,
 header.masthead .site-heading h1,
 header.masthead .site-heading .h1 {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 header.masthead .page-heading .subheading,
 header.masthead .site-heading .subheading {
@@ -11174,8 +11174,7 @@ header.masthead .post-heading .subheading {
   margin: 0.75rem 0 2rem;
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-header.masthead .post-heading .meta {
-  font-size: 1.25rem;
+header.masthead .post-heading .meta { font-size: clamp(0.9rem, 0.8vw + 0.55rem, 1.1rem);
   font-weight: 300;
   font-style: italic;
   font-family: "Lora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -11224,7 +11223,7 @@ header.masthead .site-heading .h1 {
   color: #0085A1;
 }
 .post-preview > a > .post-title {
-  font-size: 1.875rem;
+  font-size: 1.5rem;
   margin-top: 1.875rem;
   margin-bottom: 0.625rem;
 }
@@ -11255,7 +11254,7 @@ body {
 /* Article headings slightly smaller/wider to fit more text per line */
 .post-heading h1,
 .site-heading h1 {
-  font-size: clamp(1rem, 0.6vw + 0.5rem, 1rem);
+  font-size: clamp(0.8rem, 0.5vw + 0.4rem, 0.8rem);
   line-height: 1.15;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -11330,8 +11329,8 @@ header.masthead .post-heading {
 .post-heading h1,
 .site-heading h1,
 .page-heading h1 {
-  font-size: clamp(1.35rem, 0.9vw + 0.85rem, 1.85rem);
-  font-weight: 700;
+  font-size: clamp(1rem, 0.9vw + 0.6rem, 1.5rem);
+  font-weight: 650;
   line-height: 1.2;
   letter-spacing: -0.01em;
   word-break: break-word;
@@ -11355,6 +11354,9 @@ header.masthead .post-heading {
 .post-heading .post-subtitle,
 .post-subtitle {
   color: #222;
+  /* use relative spacing so multi-line titles naturally push this down */
+  margin-top: 1.2em;
+  margin-bottom: 0.5rem;
 }
 
 .post-meta {
@@ -11418,3 +11420,4 @@ h3 {
   font-size: 1.15rem;
   color: #444;
 }
+
