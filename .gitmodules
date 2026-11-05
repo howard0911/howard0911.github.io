@@ -1,0 +1,3 @@
+[submodule "travel"]
+	path = travel
+	url = https://github.com/howard0911/photo-albums.git

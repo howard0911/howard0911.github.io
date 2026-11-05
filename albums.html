@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Photo albums by Howard Peng: interactive photo journals from Paris, Tokyo and Lake Geneva, each with its own colors and sound drawn from the photos." />
+        <meta name="author" content="Howard Peng" />
+        <title>Albums · Howard Peng</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Fonts: Inter (Latin), Noto Sans TC (Chinese), JetBrains Mono (dates and labels) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+        <link href="css/site.css" rel="stylesheet" />
+        <script src="js/theme.js"></script>
+    </head>
+    <body>
+        <div class="nav-slot" data-include="partials/nav.html"></div>
+        <main>
+            <section class="page-head">
+                <div class="container">
+                    <p class="kicker">Photo journals</p>
+                    <h1>Albums</h1>
+                    <p class="lede">One album per trip. The colors, type, motion and sound of each one come from its own photos. Turn the sound on.</p>
+                </div>
+            </section>
+
+            <section class="section" aria-label="Album list">
+                <div class="container">
+                    <!-- Links name index.html explicitly so they also open from file://, where a folder URL shows a directory listing. Newest trip first. Albums live in the travel/ submodule (github.com/howard0911/photo-albums) -->
+                    <div class="cards">
+                        <a class="card" href="travel/paris-2026/index.html">
+                            <div class="card-media"><img src="travel/paris-2026/photos/full/img-2669.jpg" alt="" /></div>
+                            <div class="card-body">
+                                <span class="card-cat">旅行 &middot; Travel</span>
+                                <h2 class="card-title">Paris</h2>
+                                <p class="card-sub">Look up at stone and glass, sit under a red awning, wait for the tower to light up.</p>
+                                <div class="card-meta"><time datetime="2026-05">2026.05 &middot; 34 photos</time><span aria-hidden="true">&rarr;</span></div>
+                            </div>
+                        </a>
+                        <a class="card" href="travel/tokyo-2026/index.html">
+                            <div class="card-media"><img src="travel/tokyo-2026/photos/full/img-2082.jpg" alt="" /></div>
+                            <div class="card-body">
+                                <span class="card-cat">旅行 &middot; Travel</span>
+                                <h2 class="card-title">Echigo-Yuzawa &amp; Tokyo</h2>
+                                <p class="card-sub">From the snow of Yuzawa to Tokyo's first cherry blossoms.</p>
+                                <div class="card-meta"><time datetime="2026-02">2026.02 &middot; 35 photos</time><span aria-hidden="true">&rarr;</span></div>
+                            </div>
+                        </a>
+                        <a class="card" href="travel/lake-geneva-2025/index.html">
+                            <div class="card-media"><img src="travel/lake-geneva-2025/photos/full/img-1260.jpg" alt="" loading="lazy" /></div>
+                            <div class="card-body">
+                                <span class="card-cat">旅行 &middot; Travel</span>
+                                <h2 class="card-title">Lake Geneva, Wisconsin</h2>
+                                <p class="card-sub">Blue sky over two lakes, a hilltop church, fudge and cheese on the drive home.</p>
+                                <div class="card-meta"><time datetime="2025-10">2025.10 &middot; 36 photos</time><span aria-hidden="true">&rarr;</span></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <div data-include="partials/footer.html"></div>
+        <script src="js/layout.js"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

@@ -15,6 +15,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="articles.html">Articles</a></li>
+                <li><a href="albums.html">Albums</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li class="nav-menu-resume"><a href="https://drive.google.com/file/d/1zJvW95cWIOTyxUPpb2PKbpsKC1pjfyXc/view?usp=drive_link">Resume</a></li>
             </ul>

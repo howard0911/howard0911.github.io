@@ -23,6 +23,7 @@ python -m http.server 8000
 - `index.html` — Landing/home page
 - `about.html` — Professional bio, experience, skills
 - `articles.html` — Article listing index
+- `albums.html` — Photo album index; one card per album in `travel/`
 - `contact.html` — Contact and resume
 - `template-post.html` — Template to copy when creating new article pages
 - `[topic].html` — Individual article pages (amm, defi, onchain_fund, shor, byzantium, etc.)
@@ -47,6 +48,14 @@ Navigation and footer are loaded dynamically via `js/layout.js` using the Fetch 
 
 ### Assets
 - `assets/img/` — Article covers and in-article images (~5MB total); use compressed JPGs/PNGs when adding new ones
+
+## Photo Albums
+
+`travel/` is a git submodule of `https://github.com/howard0911/photo-albums` (public, so GitHub Pages checks it out on deploy). Each album is a self-contained folder served at `/travel/<album>/`.
+
+- Clone with `git clone --recurse-submodules`, or run `git submodule update --init` after a plain clone.
+- After pushing album changes to photo-albums, run `git submodule update --remote travel` here, commit the new submodule pointer, and push.
+- A new album also needs a card in `albums.html`, linking to `travel/<album>/index.html` (cover from `travel/<album>/photos/full/`).
 
 ## Adding New Articles
 

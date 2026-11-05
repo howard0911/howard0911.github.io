@@ -4,7 +4,7 @@
     // Same key js/theme.js reads before first paint.
     const THEME_STORAGE_KEY = 'theme';
     /** @type {ReadonlyArray<string>} */
-    const NAV_PAGES = Object.freeze(['index.html', 'about.html', 'articles.html', 'contact.html']);
+    const NAV_PAGES = Object.freeze(['index.html', 'about.html', 'articles.html', 'albums.html', 'contact.html']);
 
     /**
      * @param {string} pathname
