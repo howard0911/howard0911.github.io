@@ -1,60 +1,46 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="zh-Hant">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Howard's Blog - New Article</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="One-sentence summary used by search engines and link previews" />
+        <meta name="author" content="Howard Peng" />
+        <title>Article Title · Howard Peng</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <!-- Fonts: Inter (Latin), Noto Sans TC (Chinese), JetBrains Mono (dates and labels) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+        <link href="css/site.css" rel="stylesheet" />
+        <script src="js/theme.js"></script>
     </head>
     <body>
-        <div data-include="partials/nav.html"></div>
-        <!-- Page Header-->
-        <header class="masthead" style="background-image: url('assets/img/your-cover.jpg')">
-            <div class="container position-relative px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
-                        <div class="post-heading">
-                            <h1>Your Article Title</h1>
-                            <h2 class="subheading">Optional subtitle</h2>
-                            <span class="meta">
-                                Posted by
-                                <a href="#!">Howard Peng</a>
-                                on Month Day, Year
-                            </span>
-                        </div>
-                    </div>
-                </div>
+        <div class="nav-slot" data-include="partials/nav.html"></div>
+        <main class="post">
+            <div class="container post-layout">
+                <!-- Filled by js/toc.js from the article's h2 headings -->
+                <nav class="toc" aria-label="On this page">
+                    <p class="toc-title">On this page</p>
+                    <ol id="toc-list"></ol>
+                </nav>
+                <article class="prose">
+                    <p class="crumbs"><a href="articles.html">Articles</a> / Category: 留學 &middot; Study abroad | DeFi &amp; Blockchain | 量子計算 &middot; Quantum</p>
+                    <h1>Article Title</h1>
+                    <p class="post-en">Optional English title (delete this line if not needed)</p>
+                    <p class="post-sub">Optional subtitle (delete this line if not needed)</p>
+                    <p class="post-meta"><time datetime="YYYY-MM-DD">YYYY.MM.DD</time><span>Howard Peng</span></p>
+                    <img class="cover" src="assets/img/your-cover.jpg" alt="" />
+                    <p>Intro paragraph...</p>
+                    <h2 class="section-heading">Section heading</h2>
+                    <p>Body text...</p>
+                    <p><a href="https://link-to-original-or-medium">Medium Version</a></p>
+                    <p>Optional notes or credits.</p>
+                </article>
             </div>
-        </header>
-        <!-- Post Content-->
-        <article class="mb-4">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
-                        <p>Intro paragraph...</p>
-                        <h2 class="section-heading">Section heading</h2>
-                        <p>Body text...</p>
-                        <p><a href="https://link-to-original-or-medium">Medium Version</a></p>
-                        <p>Optional notes or credits.</p>
-                    </div>
-                </div>
-            </div>
-        </article>
+        </main>
         <div data-include="partials/footer.html"></div>
         <script src="js/layout.js"></script>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <script src="js/toc.js"></script>
     </body>
 </html>
-

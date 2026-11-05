@@ -29,23 +29,28 @@ python -m http.server 8000
 
 ### Shared Components (Partials)
 Navigation and footer are loaded dynamically via `js/layout.js` using the Fetch API:
-- `partials/nav.html` — Navbar (loaded into every page)
+- `partials/nav.html` — Navbar (loaded into every page via `<div class="nav-slot" data-include=...>`; the slot is the sticky element)
 - `partials/footer.html` — Footer with social links
 
-`layout.js` also contains inline fallback HTML for `file://` access. When editing nav or footer, update **both** `partials/nav.html` and the fallback strings inside `layout.js`.
+`layout.js` also contains inline fallback HTML for `file://` access. When editing nav or footer, update **both** the partial and the fallback strings inside `layout.js`.
 
 ### Styling
-- `css/styles.css` — Bootstrap 5.1.3 + Clean Blog theme (Start Bootstrap). Large file (~11k lines). Bootstrap classes are used inline in HTML; custom overrides are at the bottom of this file.
+- `css/site.css` — The only stylesheet; hand-written, no framework. Design tokens (colors, fonts, spacing) are CSS variables on `:root` at the top. Accent color is burgundy (`--accent-light` / `--accent-dark`). Dark mode follows the OS unless the visitor toggles it (`html[data-theme]`).
+- Fonts come from Google Fonts: Inter (Latin), Noto Sans TC (Chinese), JetBrains Mono (dates and labels). Icons are inline SVG; there is no icon library.
 
 ### JS
-- `js/scripts.js` — Scroll-based navbar hide/show behavior
-- `js/layout.js` — Partial loader (nav/footer injection)
+- `js/layout.js` — Partial loader (nav/footer injection); fires `partials:loaded`
+- `js/theme.js` — Loaded in `<head>`; applies the saved theme from localStorage before first paint
+- `js/scripts.js` — Theme toggle, mobile menu, nav border on scroll, current-page highlight
+- `js/articles.js` — Category filter on `articles.html` only
+- `js/toc.js` — Builds the "On this page" table of contents on article pages only
 
 ### Assets
-- `assets/img/` — Article images (~28MB total); use compressed JPGs/PNGs when adding new ones
+- `assets/img/` — Article covers and in-article images (~5MB total); use compressed JPGs/PNGs when adding new ones
 
 ## Adding New Articles
 
-1. Copy `template-post.html` to a new file (e.g., `newtopic.html`)
-2. Add a card linking to it in `articles.html`
-3. Place images under `assets/img/`
+1. Copy `template-post.html` to a new file (e.g., `newtopic.html`) and fill in the title, description, category, date and cover image. Use `<h2>` for sections; the table of contents is generated from them.
+2. Add a card at the top of `#article-cards` in `articles.html` with `data-category` set to `study`, `defi` or `quantum`. Move the `is-featured` class to the new first card.
+3. Update the "Latest articles" cards in `index.html` so they show the three newest articles.
+4. Place images under `assets/img/`

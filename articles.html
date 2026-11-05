@@ -2,171 +2,138 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Howard's Blog</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Articles by Howard Peng: studying statistics in the US, DeFi mechanisms, and quantum computing (mostly in Traditional Chinese)." />
+        <meta name="author" content="Howard Peng" />
+        <title>Articles · Howard Peng</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <!-- Fonts: Inter (Latin), Noto Sans TC (Chinese), JetBrains Mono (dates and labels) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+        <link href="css/site.css" rel="stylesheet" />
+        <script src="js/theme.js"></script>
     </head>
     <body>
-        <div data-include="partials/nav.html"></div>
-        <!-- Page Header-->
-        <header class="masthead" style="background-image: url('assets/img/article-bg.jpg')">
-            <div class="container position-relative px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
-                        <div class="site-heading">
-                            <h1>Articles</h1>
-                            <span class="subheading">Exploring the World, Learning Along the Way</span>
+        <div class="nav-slot" data-include="partials/nav.html"></div>
+        <main>
+            <section class="page-head">
+                <div class="container">
+                    <p class="kicker">Writing</p>
+                    <h1>Articles</h1>
+                    <p class="lede">Exploring the world, learning along the way. 中文長文為主：美國統計碩士留學心得、DeFi 機制拆解，以及量子計算入門。</p>
+                </div>
+            </section>
+
+            <section class="section" aria-label="Article list">
+                <div class="container">
+                    <div class="section-head">
+                        <div class="filters" role="group" aria-label="Filter articles by category">
+                            <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+                            <button class="chip" type="button" data-filter="study" aria-pressed="false">留學</button>
+                            <button class="chip" type="button" data-filter="defi" aria-pressed="false">DeFi &amp; Blockchain</button>
+                            <button class="chip" type="button" data-filter="quantum" aria-pressed="false">量子計算</button>
                         </div>
                     </div>
+                    <!-- Newest first. The first card is featured; js/articles.js re-picks it when filtering. -->
+                    <div class="cards" id="article-cards">
+                        <a class="card is-featured" href="23_spring.html" data-category="study">
+                            <div class="card-media"><img src="assets/img/article7-bg.jpg" alt="" /></div>
+                            <div class="card-body">
+                                <span class="card-cat">留學 &middot; Study abroad</span>
+                                <h2 class="card-title">美國統計碩士第三學期 23 Spring 就讀心得</h2>
+                                <p class="card-sub">一年回顧</p>
+                                <div class="card-meta"><time datetime="2023-07-11">2023.07.11</time><span aria-hidden="true">&rarr;</span></div>
+                            </div>
+                        </a>
+                        <a class="card" href="23_winter.html" data-category="study">
+                            <div class="card-media"><img src="assets/img/article6-bg.jpg" alt="" loading="lazy" /></div>
+                            <div class="card-body">
+                                <span class="card-cat">留學 &middot; Study abroad</span>
+                                <h2 class="card-title">美國統計碩士第二學期 23 Winter 就讀心得</h2>
+                                <p class="card-sub">芝加哥的冬天好冷</p>
+                                <div class="card-meta"><time datetime="2023-03-17">2023.03.17</time><span aria-hidden="true">&rarr;</span></div>
+                            </div>
+                        </a>
+                        <a class="card" href="22_fall.html" data-category="study">
+                            <div class="card-media"><img src="assets/img/article5-bg.jpg" alt="" loading="lazy" /></div>
+                            <div class="card-body">
+                                <span class="card-cat">留學 &middot; Study abroad</span>
+                                <h2 class="card-title">美國統計碩士第一學期 22 Fall 就讀心得</h2>
+                                <p class="card-sub">第一個學期新習慣</p>
+                                <div class="card-meta"><time datetime="2023-01-04">2023.01.04</time><span aria-hidden="true">&rarr;</span></div>
+                            </div>
+                        </a>
+                        <a class="card" href="ms_apply.html" data-category="study">
+                            <div class="card-media"><img src="assets/img/article3-bg.jpg" alt="" loading="lazy" /></div>
+                            <div class="card-body">
+                                <span class="card-cat">留學 &middot; Study abroad</span>
+                                <h2 class="card-title">2022 Fall 申請美國統計碩士心得分享</h2>
+                                <p class="card-sub">2022 Fall Application for a Master's Program in Statistics in the US</p>
+                                <div class="card-meta"><time datetime="2022-08-31">2022.08.31</time><span aria-hidden="true">&rarr;</span></div>
+                            </div>
+                        </a>
+                        <a class="card" href="amm.html" data-category="defi">
+                            <div class="card-media"><img src="assets/img/article10-bg.jpg" alt="" loading="lazy" /></div>
+                            <div class="card-body">
+                                <span class="card-cat">DeFi &amp; Blockchain</span>
+                                <h2 class="card-title">從 Uniswap 出發的 AMM 機制解析</h2>
+                                <p class="card-sub">以太坊上的去中心化交易所協定，採用恆定乘積做市商AMM</p>
+                                <div class="card-meta"><time datetime="2022-07-22">2022.07.22</time><span aria-hidden="true">&rarr;</span></div>
+                            </div>
+                        </a>
+                        <a class="card" href="defi.html" data-category="defi">
+                            <div class="card-media"><img src="assets/img/article4-bg.jpg" alt="" loading="lazy" /></div>
+                            <div class="card-body">
+                                <span class="card-cat">DeFi &amp; Blockchain</span>
+                                <h2 class="card-title">去中心化金融(DeFi) 簡介</h2>
+                                <p class="card-sub">可能是目前最大最新的金融革命</p>
+                                <div class="card-meta"><time datetime="2022-07-21">2022.07.21</time><span aria-hidden="true">&rarr;</span></div>
+                            </div>
+                        </a>
+                        <a class="card" href="onchain_fund.html" data-category="defi">
+                            <div class="card-media"><img src="assets/img/article8-bg.png" alt="" loading="lazy" /></div>
+                            <div class="card-body">
+                                <span class="card-cat">DeFi &amp; Blockchain</span>
+                                <h2 class="card-title">Onchain Fund 鏈上基金</h2>
+                                <p class="card-sub">將基金上鏈的各種可能性討論</p>
+                                <div class="card-meta"><time datetime="2021-07-29">2021.07.29</time><span aria-hidden="true">&rarr;</span></div>
+                            </div>
+                        </a>
+                        <a class="card" href="shor.html" data-category="quantum">
+                            <div class="card-media"><img src="assets/img/article9-bg.jpg" alt="" loading="lazy" /></div>
+                            <div class="card-body">
+                                <span class="card-cat">量子計算 &middot; Quantum</span>
+                                <h2 class="card-title">Shor's Algorithm</h2>
+                                <p class="card-sub">量子計算初學者的理解</p>
+                                <div class="card-meta"><time datetime="2021-07-20">2021.07.20</time><span aria-hidden="true">&rarr;</span></div>
+                            </div>
+                        </a>
+                        <a class="card" href="byzantium.html" data-category="defi">
+                            <div class="card-media"><img src="assets/img/article2-bg.jpg" alt="" loading="lazy" /></div>
+                            <div class="card-body">
+                                <span class="card-cat">DeFi &amp; Blockchain</span>
+                                <h2 class="card-title">拜占庭問題與容錯算法</h2>
+                                <p class="card-sub">透過工作量證明機制 PoW ，節點使用算力去證明自己沒有惡意</p>
+                                <div class="card-meta"><time datetime="2020-11-02">2020.11.02</time><span aria-hidden="true">&rarr;</span></div>
+                            </div>
+                        </a>
+                        <a class="card" href="mason_gre.html" data-category="study">
+                            <div class="card-media"><img src="assets/img/post1-bg.jpg" alt="" loading="lazy" /></div>
+                            <div class="card-body">
+                                <span class="card-cat">留學 &middot; Study abroad</span>
+                                <h2 class="card-title">【GRE】二戰323 AW3.5</h2>
+                                <p class="card-sub">Thanks Mason GRE</p>
+                                <div class="card-meta"><time datetime="2020-08-15">2020.08.15</time><span aria-hidden="true">&rarr;</span></div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        </header>
-        <!-- Main Content-->
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    <!-- Post preview-->
-                    <div class="post-preview">
-                        <a href="23_spring.html">
-                            <h2 class="post-title">美國統計碩士第三學期 23 Spring 就讀心得 - Statistics Master's Third Semester '23 Spring Study Experience</h2>
-                            <h3 class="subheading">一年回顧</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Howard Peng</a>
-                            on July 11, 2023
-                        </p>
-                    </div>
-                    <br>
-                    <div class="post-preview">
-                        <a href="23_winter.html">
-                            <h2 class="post-title">美國統計碩士第二學期 23 Winter 就讀心得 - Statistics Master's Second Semester '23 Winter Study Experience</h2>
-                            <h3 class="subheading">芝加哥的冬天好冷</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Howard Peng</a>
-                            on March 17, 2023
-                        </p>
-                    </div>
-                    <br>
-                    <div class="post-preview">
-                        <a href="22_fall.html">
-                            <h2 class="post-title">美國統計碩士第一學期 22 Fall 就讀心得 - Statistics Master's First Semester '22 Spring Study Experience</h2>
-                            <h3 class="subheading">第一個學期新習慣</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Howard Peng</a>
-                            on January 4, 2023
-                        </p>
-                    </div>
-                    <br>
-                    <div class="post-preview">
-                        <a href="ms_apply.html">
-                            <h2 class="post-title">2022 Fall 申請美國統計碩士心得分享 - 2022 Fall Application for a Master's Program in Statistics in the US</h2>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Howard Peng</a>
-                            on August 31, 2022
-                        </p>
-                    </div>
-                    <br>
-                    <div class="post-preview">
-                        <a href="amm.html">
-                            <h2 class="post-title">從 Uniswap 出發的 AMM 機制解析 - Analysis of AMM mechanism starting from Uniswap</h2>
-                            <h3 class="subheading">以太坊上的去中心化交易所協定，採用恆定乘積做市商AMM</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Howard Peng</a>
-                            on July 22, 2022
-                        </p>
-                    </div>
-                    <br>
-                    <div class="post-preview">
-                        <a href="defi.html">
-                            <h2 class="post-title">去中心化金融(DeFi) 簡介</h2>
-                            <h3 class="subheading">可能是目前最大最新的金融革命</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Howard Peng</a>
-                            on July 21, 2022
-                        </p>
-                    </div>
-                    <br>
-                    <div class="post-preview">
-                        <a href="onchain_fund.html">
-                            <h2 class="post-title">Onchain Fund 鏈上基金</h2>
-                            <h3 class="subheading">將基金上鏈的各種可能性討論</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Howard Peng</a>
-                            on July 29, 2021
-                        </p>
-                    </div>
-                    <br>
-                    <div class="post-preview">
-                        <a href="shor.html">
-                            <h2 class="post-title">Shor's Algorithm</h2>
-                            <h3 class="subheading">量子計算初學者的理解</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Howard Peng</a>
-                            on July 20, 2021
-                        </p>
-                    </div>
-                    <br>
-                    <div class="post-preview">
-                        <a href="byzantium.html">
-                            <h2 class="post-title">拜占庭問題與容錯算法</h2>
-                            <h3 class="subheading">透過工作量證明機制 PoW ，節點使用算力去證明自己沒有惡意</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Howard Peng</a>
-                            on November 2, 2020
-                        </p>
-                    </div>
-                    <br>
-                    <div class="post-preview">
-                        <a href="mason_gre.html">
-                            <h2 class="post-title">【GRE】二戰323 AW3.5</h2>
-                            <h3 class="subheading">Thanks Mason GRE</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Howard Peng</a>
-                            on August 15, 2020
-                        </p>
-                    </div>
-                    
-                    <!-- Divider-->
-                    <hr class="my-4" />
-                    
-
-                </div>
-            </div>
-        </div>
+            </section>
+        </main>
         <div data-include="partials/footer.html"></div>
         <script src="js/layout.js"></script>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <script src="js/articles.js"></script>
     </body>
 </html>
-

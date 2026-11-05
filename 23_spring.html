@@ -1,123 +1,107 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="zh-Hant">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Howard's Blog</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="一年回顧" />
+        <meta name="author" content="Howard Peng" />
+        <title>美國統計碩士第三學期 23 Spring 就讀心得 · Howard Peng</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <!-- Fonts: Inter (Latin), Noto Sans TC (Chinese), JetBrains Mono (dates and labels) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+        <link href="css/site.css" rel="stylesheet" />
+        <script src="js/theme.js"></script>
     </head>
     <body>
-        <div data-include="partials/nav.html"></div>
-        <!-- Page Header-->
-        <header class="masthead" style="background-image: url('assets/img/article7-bg.jpg')">
-            <div class="container position-relative px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
-                        <div data-lang="zh">
-                        <div class="post-heading">
-                            <h1>美國統計碩士第三學期 23 Spring 就讀心得 - Statistics Master's Third Semester '23 Spring Study Experience</h1>
-                            <h3 class="post-subtitle">一年回顧</h3>
-                            <span class="meta">
-                                Posted by
-                                <a href="#!">Howard Peng</a>
-                                on July 11, 2023
-                            </span>
-                        </div>
-                    </div>
-                </div>
+        <div class="nav-slot" data-include="partials/nav.html"></div>
+        <main class="post">
+            <div class="container post-layout">
+                <!-- Filled by js/toc.js from the article's h2 headings -->
+                <nav class="toc" aria-label="On this page">
+                    <p class="toc-title">On this page</p>
+                    <ol id="toc-list"></ol>
+                </nav>
+                <article class="prose">
+                    <p class="crumbs"><a href="articles.html">Articles</a> / 留學 &middot; Study abroad</p>
+                    <h1>美國統計碩士第三學期 23 Spring 就讀心得</h1>
+                    <p class="post-en">Statistics Master's Third Semester '23 Spring Study Experience</p>
+                    <p class="post-sub">一年回顧</p>
+                    <p class="post-meta"><time datetime="2023-07-11">2023.07.11</time><span>Howard Peng</span></p>
+                    <img class="cover" src="assets/img/article7-bg.jpg" alt="" />
+                    <h2 class="section-heading">前言</h2>
+                    <P>回來台灣已經快一個月，休息了一陣子，來回顧一下上個學年度最後一個學期上了什麼課，也給有興趣的人一個參考。我所有的感想都是個人心得，不代表所有人的感覺，每年教授安排也都不一定一樣，所以參考就好。</P>
+                    <h2 class="section-heading">修課心得</h2>
+                    <p>我 23 Spring 選了下面三門課：<br>
+                        <b><i>STAT 32950 — Multivariate Statistical Analysis: Applications and Techniques</i></b><br>
+                        <b><i>STAT 35920 — Applied Bayesian Modeling and Inference</i></b><br>
+                        <b><i>BUSN 41201—Big Data</i></b><br>
+                        這學期只有第一門課是 Program requirement，後面兩個都是我自己選的選修，其中Big Data 是Booth 底下開的課，以下就稍微分享一下上完下面三門課的心得。</p>
+
+                    <h2 class="section-heading"><i>STAT 32950 — Multivariate Statistical Analysis: Applications and Techniques</i></h2>
+                    <p>Instructor: Mei Wang</p>
+                    <p>當初有兩個必選課在這個學期可以讓我們選，另外一門是 STAT 348-Modern Methods in Applied Statistics，我看了課程大綱我更喜歡 32950 這門課，雖然說這門課是屬於 Theoretical sequence，但是課程內容很多東西我都很想學，大部分是多變數統計的分析和方法，課程後半教了Machine Learning的演算法，主要都是演算法背後的數學理論，而應用部分是使用 R，沒有使用Python 有點可惜，不過多打一些ML的地基，對自己也是有幫助的。</p>
+                    <p>在選之前就有聽說作業量很大，而確實是如此，每周一份作業，大約6-7大題，每題的內容都是上課教的內容，不會有超剛的情況，但是最後寫完都是寫到十幾頁。另外老師還有要求作業格式希望用LaTex 完成，所以我都是用Rmarkdown，融合我的程式碼，因此花的時間又比直接寫多了不少。考試的部分是一次期中一次期末，考試格式和作業類似，準備起來不會有力不從心的感覺，是很有方向的準備，除此之外也可以帶一張Cheat sheet，讓大家不用把上課教的公式全部背下來，不然太多了。</p>
+                    <p>總體而言，我在這門課學到了不少，教授上課時也給我們很多幫助，課後和考試後都很願意瞭解大家的問題，也有很多office hour。這門課有兩個時段，我選擇的是比較早的，所以上課的人比較少，也因此老師可以比較照顧到大家的問題，大家上課的風氣也很不錯，都很踴躍問問題，上課的時候有很多討論，雖然有時候大家感覺蠻累的，畢竟時間有點早。蠻推薦這們課的。</p>
+
+                    <h2 class="section-heading"><i>STAT 35920 — Applied Bayesian Modeling and Inference</i></h2>
+                    <p>Instructor: Yuan Ji</p>
+                    <p>這門課就是我選的選修了，隸屬於 Public Health Sciences，主要的上課內容是貝氏統計，教了很多方法和理論，前半段是理論的部分，包含 Bayesian Theory 和 modeling，後半則是教一些Sample常用的演算法，包含Markov chain Monte Carlo methods 和Gibb Sampling 等等，主要是如何計算。</p>
+                    <p>班級人數很少，老師上課也很鼓勵大家討論，因此除了課程內容之外，也練習了蠻多英文口說，上課風格不像平常純輸入，很多時候會希望我們多多給意見，我蠻喜歡這種上課模式。</p>
+                    <p>作業大約是兩週一次，有手算的，也有Computation，主要也是使用R語言，學期中有兩次考試，題型和作業相似，期末則有老師指定主題的 Project，期末最後一堂課讓大家 Present，老師把大家分成兩組，其中我在的組都是Stat major 的同學，所以老師分配一個比較需要讀數學理論能力的題目，然後模擬出老師想要看到的結果。我個人覺得蠻有趣的，可以和同學合作讀paper ，然後試著implement，雖然可能結果沒有完全完成，但是確實學到很多。</p>
+
+                    <h2 class="section-heading"><i>BUSN 41201 — Big Data</i></h2>
+                    <p>Instructor: Veronika Rockova</p>
+                    <p>最後一門課是 Big Data，從課程安排來看，內容其實有六成都已經學過，從 Regression, Classification，到 Clustering, Machine Learning，也是上課的時候老師講理論，搭配實際的data 例子，每星期一份slide，一個主題。雖說有部分內容聽過，但是老師講的挺仔細的，有些細節老師補充很多，原本我沒搞清楚的地方，老師講完腦裡架構清楚很多。</p>
+                    <p>總共只有一次 take home 期中考，作業則是每周一次，期末有 final project，題目可以自己找dataset，內容則是包含上課講過的東西就可以，作業和project 都是分組完成，所以有很多需要討論的地方，和需要討論的時間，雖然有時候覺得分組的效率不高，但是這也是一種訓練，訓練和人溝通的能力，和分配工作和整合的能力。整體而言，課程loading 不會太重，但是認真學還是能學到東西。一樣可惜的是上課用的程式語言還是R，所以我上學期三門課都是使用R，說實話我Python 的熟練度有一點下滑，希望下個學期能多用 Python。</p>
+                    <h2 class="section-heading">後記</h2>
+                    <p>上學期三門課都是選不同學院的課，上課風格也都很不一樣，在必修都上完後，可以自由選擇想上甚麼，感覺很不錯，體驗到了各種老師的風格。雖然不知道離我想到的目標還有點遠，但我認為應該有愈來愈靠近。</p>
+
+                    <h2 class="section-heading">Preface</h2>
+                    <p>It has been almost a month since I returned to Taiwan, and after taking a break, I'd like to reflect on the courses I took during the last semester of the academic year. Hopefully, this can serve as a reference for those who are interested. All of my opinions are personal and do not represent everyone's experiences. Course arrangements may also vary each year depending on the professor, so take this as a general guide.</p>
+
+                    <h2 class="section-heading">Course Experience</h2>
+                    <p>During Spring 2023, I took the following three courses:<br>
+                        <b><i>STAT 32950 — Multivariate Statistical Analysis: Applications and Techniques</i></b><br>
+                        <b><i>STAT 35920 — Applied Bayesian Modeling and Inference</i></b><br>
+                        <b><i>BUSN 41201 — Big Data</i></b><br>
+                        Among these, only the first course was a program requirement, while the other two were electives of my choice. Notably, the Big Data course was offered by Booth School of Business. Below are my thoughts on each course.</p>
+
+                    <h2 class="section-heading"><i>STAT 32950 — Multivariate Statistical Analysis: Applications and Techniques</i></h2>
+                    <p>Instructor: Mei Wang</p>
+                    <p>At the time, we had two core courses to choose from: STAT 32950 and STAT 348 - Modern Methods in Applied Statistics. After reviewing the syllabi, I found 32950 more appealing. Although this course is categorized under the theoretical sequence, I was interested in many of the topics covered. The course primarily focused on multivariate statistical analysis and methods, with the latter part covering machine learning algorithms—mainly the mathematical foundations behind these algorithms. For applications, we used R instead of Python, which was a bit of a downside, but strengthening my ML fundamentals was still beneficial.</p>
+                    <p>Before enrolling, I had heard that the workload was heavy, and that turned out to be true. There was a weekly assignment with 6-7 major questions, all based on lecture content—nothing beyond what was taught in class. However, each assignment ended up being over ten pages long. Additionally, the professor required assignments to be formatted in LaTeX, so I used RMarkdown to integrate my code, which took extra time compared to simply writing the answers.</p>
+                    <p>The course had a midterm and a final exam, both structured similarly to the assignments, making preparation more straightforward. We were also allowed to bring a cheat sheet, so memorizing all the formulas wasn't necessary—which was a relief, given the volume of material covered.</p>
+                    <p>Overall, I learned a lot from this course, and the professor was very supportive. She was always available for questions, both after lectures and during exams, and provided plenty of office hours. There were two sections for this course, and I opted for the earlier one, which had fewer students. This allowed for more interaction with the professor, and the class atmosphere was quite engaging, with frequent discussions and questions. Although it was an early morning class and sometimes felt exhausting, I would highly recommend it.</p>
+
+                    <h2 class="section-heading"><i>STAT 35920 — Applied Bayesian Modeling and Inference</i></h2>
+                    <p>Instructor: Yuan Ji</p>
+                    <p>This elective course, offered by the Public Health Sciences department, focused on Bayesian statistics. The first half covered Bayesian theory and modeling, while the second half introduced common sampling algorithms such as Markov Chain Monte Carlo (MCMC) methods and Gibbs Sampling, with a strong emphasis on computational techniques.</p>
+                    <p>The class was relatively small, and the professor encouraged discussions, making it a great opportunity to practice spoken English. Unlike traditional lecture-heavy classes, this course involved a lot of interaction and participation, which I really enjoyed.</p>
+                    <p>Assignments were given roughly every two weeks and included both theoretical problems and computational exercises, primarily using R. There were two exams during the semester, both similar in format to the assignments, making them manageable. For the final project, the professor assigned specific topics, and the last class was dedicated to student presentations. The professor divided the students into two groups—my group consisted mostly of statistics majors, so we were given a topic that required a strong mathematical foundation. Our task was to read research papers and attempt to implement the methods to simulate the expected results. Although we didn't achieve perfect results, the experience of collaborating with classmates, reviewing academic literature, and applying theoretical concepts was highly valuable.</p>
+
+                    <h2 class="section-heading"><i>BUSN 41201 — Big Data</i></h2>
+                    <p>Instructor: Veronika Rockova</p>
+                    <p>The final course I took was Big Data. The course content was about 60% familiar to me, covering topics like regression, classification, clustering, and machine learning. The professor explained the theoretical foundations in lectures and supplemented them with real-world data examples. Each week, we had a new slide deck focusing on a specific topic.</p>
+                    <p>Although some topics were repetitive, the professor provided detailed explanations and clarifications on many subtle points. Some concepts that I had previously struggled with became much clearer after taking this course.</p>
+                    <p>The course had only one take-home midterm exam, with weekly assignments. For the final project, we could choose our own dataset and apply the methods learned in class. Both the assignments and the project were group-based, requiring a lot of discussions and coordination. Although group work sometimes felt inefficient, it was a good exercise in communication, task delegation, and teamwork. </p>
+                    <p>Overall, the workload for this course was not too heavy, but I still learned a lot by actively engaging with the material. One downside, however, was that the course used R instead of Python. Since all three of my courses this semester used R, I felt that my Python proficiency had slightly declined. I hope to use Python more in the next semester.</p>
+
+                    <h2 class="section-heading">Final Thoughts</h2>
+                    <p>This semester, I took courses from different departments, which exposed me to a variety of teaching styles. After completing my core courses, I appreciated the flexibility to choose subjects that interested me. It was a great experience learning from different professors with diverse approaches to teaching. While I still feel that I am far from my ultimate goal, I believe I am getting closer step by step.</p>
+
+
+                    <p>
+                        <a href="https://howardpeng911.medium.com/%E7%BE%8E%E5%9C%8B%E7%B5%B1%E8%A8%88%E7%A2%A9%E5%A3%AB%E7%AC%AC%E4%B8%89%E5%AD%B8%E6%9C%9F-23-spring%E5%B0%B1%E8%AE%80%E5%BF%83%E5%BE%97-1c593bcce052">Medium Version</a>
+                    </p>
+                    English translate is generated by AI for reference.
+                </article>
             </div>
-        </header>
-        <!-- Post Content-->
-        <article class="mb-4">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
-                        <h2 class="section-heading">前言</h2>
-                        <P>回來台灣已經快一個月，休息了一陣子，來回顧一下上個學年度最後一個學期上了什麼課，也給有興趣的人一個參考。我所有的感想都是個人心得，不代表所有人的感覺，每年教授安排也都不一定一樣，所以參考就好。</P>
-                        <h2 class="section-heading">修課心得</h2>
-                        <p>我 23 Spring 選了下面三門課：<br>
-                            <b><i>STAT 32950 — Multivariate Statistical Analysis: Applications and Techniques</i></b><br>
-                            <b><i>STAT 35920 — Applied Bayesian Modeling and Inference</i></b><br>
-                            <b><i>BUSN 41201—Big Data</i></b><br>
-                            這學期只有第一門課是 Program requirement，後面兩個都是我自己選的選修，其中Big Data 是Booth 底下開的課，以下就稍微分享一下上完下面三門課的心得。</p>
-
-                        <h2 class="section-heading"><i>STAT 32950 — Multivariate Statistical Analysis: Applications and Techniques</i></h2>
-                        <p>Instructor: Mei Wang</p>
-                        <p>當初有兩個必選課在這個學期可以讓我們選，另外一門是 STAT 348-Modern Methods in Applied Statistics，我看了課程大綱我更喜歡 32950 這門課，雖然說這門課是屬於 Theoretical sequence，但是課程內容很多東西我都很想學，大部分是多變數統計的分析和方法，課程後半教了Machine Learning的演算法，主要都是演算法背後的數學理論，而應用部分是使用 R，沒有使用Python 有點可惜，不過多打一些ML的地基，對自己也是有幫助的。</p>
-                        <p>在選之前就有聽說作業量很大，而確實是如此，每周一份作業，大約6-7大題，每題的內容都是上課教的內容，不會有超剛的情況，但是最後寫完都是寫到十幾頁。另外老師還有要求作業格式希望用LaTex 完成，所以我都是用Rmarkdown，融合我的程式碼，因此花的時間又比直接寫多了不少。考試的部分是一次期中一次期末，考試格式和作業類似，準備起來不會有力不從心的感覺，是很有方向的準備，除此之外也可以帶一張Cheat sheet，讓大家不用把上課教的公式全部背下來，不然太多了。</p>
-                        <p>總體而言，我在這門課學到了不少，教授上課時也給我們很多幫助，課後和考試後都很願意瞭解大家的問題，也有很多office hour。這門課有兩個時段，我選擇的是比較早的，所以上課的人比較少，也因此老師可以比較照顧到大家的問題，大家上課的風氣也很不錯，都很踴躍問問題，上課的時候有很多討論，雖然有時候大家感覺蠻累的，畢竟時間有點早。蠻推薦這們課的。</p>
-
-                        <h2 class="section-heading"><i>STAT 35920 — Applied Bayesian Modeling and Inference</i></h2>
-                        <p>Instructor: Yuan Ji</p>
-                        <p>這門課就是我選的選修了，隸屬於 Public Health Sciences，主要的上課內容是貝氏統計，教了很多方法和理論，前半段是理論的部分，包含 Bayesian Theory 和 modeling，後半則是教一些Sample常用的演算法，包含Markov chain Monte Carlo methods 和Gibb Sampling 等等，主要是如何計算。</p>
-                        <p>班級人數很少，老師上課也很鼓勵大家討論，因此除了課程內容之外，也練習了蠻多英文口說，上課風格不像平常純輸入，很多時候會希望我們多多給意見，我蠻喜歡這種上課模式。</p>
-                        <p>作業大約是兩週一次，有手算的，也有Computation，主要也是使用R語言，學期中有兩次考試，題型和作業相似，期末則有老師指定主題的 Project，期末最後一堂課讓大家 Present，老師把大家分成兩組，其中我在的組都是Stat major 的同學，所以老師分配一個比較需要讀數學理論能力的題目，然後模擬出老師想要看到的結果。我個人覺得蠻有趣的，可以和同學合作讀paper ，然後試著implement，雖然可能結果沒有完全完成，但是確實學到很多。</p>
-
-                        <h2 class="section-heading"><i>BUSN 41201 — Big Data</i></h2>
-                        <p>Instructor: Veronika Rockova</p>
-                        <p>最後一門課是 Big Data，從課程安排來看，內容其實有六成都已經學過，從 Regression, Classification，到 Clustering, Machine Learning，也是上課的時候老師講理論，搭配實際的data 例子，每星期一份slide，一個主題。雖說有部分內容聽過，但是老師講的挺仔細的，有些細節老師補充很多，原本我沒搞清楚的地方，老師講完腦裡架構清楚很多。</p>
-                        <p>總共只有一次 take home 期中考，作業則是每周一次，期末有 final project，題目可以自己找dataset，內容則是包含上課講過的東西就可以，作業和project 都是分組完成，所以有很多需要討論的地方，和需要討論的時間，雖然有時候覺得分組的效率不高，但是這也是一種訓練，訓練和人溝通的能力，和分配工作和整合的能力。整體而言，課程loading 不會太重，但是認真學還是能學到東西。一樣可惜的是上課用的程式語言還是R，所以我上學期三門課都是使用R，說實話我Python 的熟練度有一點下滑，希望下個學期能多用 Python。</p>
-                        <h2 class="section-heading">後記</h2>
-                        <p>上學期三門課都是選不同學院的課，上課風格也都很不一樣，在必修都上完後，可以自由選擇想上甚麼，感覺很不錯，體驗到了各種老師的風格。雖然不知道離我想到的目標還有點遠，但我認為應該有愈來愈靠近。</p>
-
-                        <h2 class="section-heading">Preface</h2>
-                        <p>It has been almost a month since I returned to Taiwan, and after taking a break, I'd like to reflect on the courses I took during the last semester of the academic year. Hopefully, this can serve as a reference for those who are interested. All of my opinions are personal and do not represent everyone's experiences. Course arrangements may also vary each year depending on the professor, so take this as a general guide.</p>
-                        
-                        <h2 class="section-heading">Course Experience</h2>
-                        <p>During Spring 2023, I took the following three courses:<br>
-                            <b><i>STAT 32950 — Multivariate Statistical Analysis: Applications and Techniques</i></b><br>
-                            <b><i>STAT 35920 — Applied Bayesian Modeling and Inference</i></b><br>
-                            <b><i>BUSN 41201 — Big Data</i></b><br>
-                            Among these, only the first course was a program requirement, while the other two were electives of my choice. Notably, the Big Data course was offered by Booth School of Business. Below are my thoughts on each course.</p>
-                        
-                        <h2 class="section-heading"><i>STAT 32950 — Multivariate Statistical Analysis: Applications and Techniques</i></h2>
-                        <p>Instructor: Mei Wang</p>
-                        <p>At the time, we had two core courses to choose from: STAT 32950 and STAT 348 - Modern Methods in Applied Statistics. After reviewing the syllabi, I found 32950 more appealing. Although this course is categorized under the theoretical sequence, I was interested in many of the topics covered. The course primarily focused on multivariate statistical analysis and methods, with the latter part covering machine learning algorithms—mainly the mathematical foundations behind these algorithms. For applications, we used R instead of Python, which was a bit of a downside, but strengthening my ML fundamentals was still beneficial.</p>
-                        <p>Before enrolling, I had heard that the workload was heavy, and that turned out to be true. There was a weekly assignment with 6-7 major questions, all based on lecture content—nothing beyond what was taught in class. However, each assignment ended up being over ten pages long. Additionally, the professor required assignments to be formatted in LaTeX, so I used RMarkdown to integrate my code, which took extra time compared to simply writing the answers.</p>
-                        <p>The course had a midterm and a final exam, both structured similarly to the assignments, making preparation more straightforward. We were also allowed to bring a cheat sheet, so memorizing all the formulas wasn't necessary—which was a relief, given the volume of material covered.</p>
-                        <p>Overall, I learned a lot from this course, and the professor was very supportive. She was always available for questions, both after lectures and during exams, and provided plenty of office hours. There were two sections for this course, and I opted for the earlier one, which had fewer students. This allowed for more interaction with the professor, and the class atmosphere was quite engaging, with frequent discussions and questions. Although it was an early morning class and sometimes felt exhausting, I would highly recommend it.</p>
-                        
-                        <h2 class="section-heading"><i>STAT 35920 — Applied Bayesian Modeling and Inference</i></h2>
-                        <p>Instructor: Yuan Ji</p>
-                        <p>This elective course, offered by the Public Health Sciences department, focused on Bayesian statistics. The first half covered Bayesian theory and modeling, while the second half introduced common sampling algorithms such as Markov Chain Monte Carlo (MCMC) methods and Gibbs Sampling, with a strong emphasis on computational techniques.</p>
-                        <p>The class was relatively small, and the professor encouraged discussions, making it a great opportunity to practice spoken English. Unlike traditional lecture-heavy classes, this course involved a lot of interaction and participation, which I really enjoyed.</p>
-                        <p>Assignments were given roughly every two weeks and included both theoretical problems and computational exercises, primarily using R. There were two exams during the semester, both similar in format to the assignments, making them manageable. For the final project, the professor assigned specific topics, and the last class was dedicated to student presentations. The professor divided the students into two groups—my group consisted mostly of statistics majors, so we were given a topic that required a strong mathematical foundation. Our task was to read research papers and attempt to implement the methods to simulate the expected results. Although we didn't achieve perfect results, the experience of collaborating with classmates, reviewing academic literature, and applying theoretical concepts was highly valuable.</p>
-                        
-                        <h2 class="section-heading"><i>BUSN 41201 — Big Data</i></h2>
-                        <p>Instructor: Veronika Rockova</p>
-                        <p>The final course I took was Big Data. The course content was about 60% familiar to me, covering topics like regression, classification, clustering, and machine learning. The professor explained the theoretical foundations in lectures and supplemented them with real-world data examples. Each week, we had a new slide deck focusing on a specific topic.</p>
-                        <p>Although some topics were repetitive, the professor provided detailed explanations and clarifications on many subtle points. Some concepts that I had previously struggled with became much clearer after taking this course.</p>
-                        <p>The course had only one take-home midterm exam, with weekly assignments. For the final project, we could choose our own dataset and apply the methods learned in class. Both the assignments and the project were group-based, requiring a lot of discussions and coordination. Although group work sometimes felt inefficient, it was a good exercise in communication, task delegation, and teamwork. </p>
-                        <p>Overall, the workload for this course was not too heavy, but I still learned a lot by actively engaging with the material. One downside, however, was that the course used R instead of Python. Since all three of my courses this semester used R, I felt that my Python proficiency had slightly declined. I hope to use Python more in the next semester.</p>
-                        
-                        <h2 class="section-heading">Final Thoughts</h2>
-                        <p>This semester, I took courses from different departments, which exposed me to a variety of teaching styles. After completing my core courses, I appreciated the flexibility to choose subjects that interested me. It was a great experience learning from different professors with diverse approaches to teaching. While I still feel that I am far from my ultimate goal, I believe I am getting closer step by step.</p>
-                        
-
-                        <p>
-                            <a href="https://howardpeng911.medium.com/%E7%BE%8E%E5%9C%8B%E7%B5%B1%E8%A8%88%E7%A2%A9%E5%A3%AB%E7%AC%AC%E4%B8%89%E5%AD%B8%E6%9C%9F-23-spring%E5%B0%B1%E8%AE%80%E5%BF%83%E5%BE%97-1c593bcce052">Medium Version</a>
-                        </p>
-                        English translate is generated by AI for reference.
-                    </div>
-                </div>
-            </div>
-        </article>
+        </main>
         <div data-include="partials/footer.html"></div>
         <script src="js/layout.js"></script>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <script src="js/toc.js"></script>
     </body>
 </html>
-
-

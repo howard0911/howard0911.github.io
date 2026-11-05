@@ -1,16 +1,31 @@
-# Welcome to My Personal Website
+# howard0911.github.io
 
-## Overview
-This repository contains the source code for my personal website, hosted at [howard0911.github.io](https://howard0911.github.io). The website serves as my digital portfolio, showcasing my projects, skills, and professional journey.
+Source code for my personal website, live at [howard0911.github.io](https://howard0911.github.io): a portfolio and blog about my work as a data product manager.
 
-## Features
-- **About Me**: Learn more about my background, education, and professional experiences.
-- **Projects**: Detailed case studies of my work in data science, including analyses and insights.
-- **Articles**: Browse through articles I've written on various topics including career insights, technical knowledge, and reflections on life.
-- **Resume**: Up-to-date information about my skills, experiences, and educational background.
-- **Contact**: Information on how to reach me for potential opportunities, collaborations, or inquiries.
+## What's on the site
+
+- **Home**: a short introduction and the three newest articles.
+- **About**: my experience, education, projects, technical skills, extracurriculars and awards.
+- **Articles**: writing (mostly in Traditional Chinese) on studying abroad, DeFi and blockchain, and quantum computing, filterable by topic. Each article has an auto-generated table of contents.
+- **Contact**: email, LinkedIn and my latest resume.
+
+The site supports light and dark mode and works on phones.
+
+## How it's built
+
+Plain HTML, CSS and JavaScript, with no framework and no build step. The navigation and footer are shared partials in `partials/`, injected by `js/layout.js`. All styling is in `css/site.css`.
+
+Run it locally:
+
+```bash
+python -m http.server 8000
+# then open http://localhost:8000
+```
+
+Pushing to `master` deploys the site through GitHub Pages.
+
+See [CLAUDE.md](CLAUDE.md) for the file layout and the steps to publish a new article.
 
 ## Contact
-Feel free to connect with me regarding any inquiries or opportunities. You can reach me through the contact form on the website or directly via email at [howardpeng911@gmail.com](mailto:howardpeng911@gmail.com).
 
-Thank you for visiting!
+Email me at [howardpeng911@gmail.com](mailto:howardpeng911@gmail.com) or reach me on [LinkedIn](https://www.linkedin.com/in/sheng-hau-peng/).
