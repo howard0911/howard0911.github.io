@@ -36,8 +36,8 @@ Navigation and footer are loaded dynamically via `js/layout.js` using the Fetch 
 `layout.js` also contains inline fallback HTML for `file://` access. When editing nav or footer, update **both** the partial and the fallback strings inside `layout.js`.
 
 ### Styling
-- `css/site.css` — The only stylesheet; hand-written, no framework. Design tokens (colors, fonts, spacing) are CSS variables on `:root` at the top. Accent color is burgundy (`--accent-light` / `--accent-dark`). Dark mode follows the OS unless the visitor toggles it (`html[data-theme]`).
-- Fonts come from Google Fonts: Inter (Latin), Noto Sans TC (Chinese), JetBrains Mono (dates and labels). Icons are inline SVG; there is no icon library.
+- `css/site.css` — The only stylesheet; hand-written, no framework. Design tokens (colors, fonts, spacing) are CSS variables on `:root` at the top and follow `DESIGN.md`. Accent color is burgundy (`--accent`). Dark mode follows the OS unless the visitor toggles it (`html[data-theme]`).
+- Fonts come from Google Fonts: Source Serif 4 + Noto Serif TC (headings and reading text), IBM Plex Sans + Noto Sans TC (UI), IBM Plex Mono (dates and numbers). Every page loads the same font link. Icons are inline SVG; there is no icon library.
 
 ### JS
 - `js/layout.js` — Partial loader (nav/footer injection); fires `partials:loaded`
@@ -55,11 +55,17 @@ Navigation and footer are loaded dynamically via `js/layout.js` using the Fetch 
 
 - Clone with `git clone --recurse-submodules`, or run `git submodule update --init` after a plain clone.
 - After pushing album changes to photo-albums, run `git submodule update --remote travel` here, commit the new submodule pointer, and push.
-- A new album also needs a card in `albums.html`, linking to `travel/<album>/index.html` (cover from `travel/<album>/photos/full/`).
+- A new album also needs an `.album` entry in `albums.html` and in the Albums block of `index.html`, linking to `travel/<album>/index.html` (cover from `travel/<album>/photos/full/`).
 
 ## Adding New Articles
 
-1. Copy `template-post.html` to a new file (e.g., `newtopic.html`) and fill in the title, description, category, date and cover image. Use `<h2>` for sections; the table of contents is generated from them.
-2. Add a card at the top of `#article-cards` in `articles.html` with `data-category` set to `study`, `defi` or `quantum`. Move the `is-featured` class to the new first card.
-3. Update the "Latest articles" cards in `index.html` so they show the three newest articles.
+1. Copy `template-post.html` to a new file (e.g., `newtopic.html`) and fill in the title, English title (`post-en`), description, category, date and cover image. Use `<h2>` for sections; the table of contents and the section numbers are generated from them.
+2. Add an `.entry` at the top of `#article-list` in `articles.html` with `data-category` set to `study`, `defi` or `quantum`, the Chinese title and its English gloss (same text as `post-en`). Update the counts on the filter tabs.
+3. Update the Writing list in `index.html` so it shows the five newest articles, and the article counts there.
 4. Place images under `assets/img/`
+
+## Design System
+Always read DESIGN.md before making any visual or UI decisions.
+All font choices, colors, spacing, and aesthetic direction are defined there.
+Do not deviate without explicit user approval.
+In QA mode, flag any code that doesn't match DESIGN.md.

@@ -9,7 +9,7 @@
         'partials/nav.html': `
 <header class="site-nav" id="site-nav">
     <div class="container nav-inner">
-        <a class="brand" href="index.html"><span class="brand-mark">HP</span>Howard Peng</a>
+        <a class="brand" href="index.html">Howard Peng</a>
         <nav class="nav-right" aria-label="Main">
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Home</a></li>

@@ -1,11 +1,11 @@
-// Category filter for the article grid on articles.html.
+// Topic filter for the writing index on articles.html.
 (() => {
     /** @type {HTMLElement[]} */
-    const cards = Array.from(document.querySelectorAll('#article-cards .card'));
+    const entries = Array.from(document.querySelectorAll('#article-list .entry'));
     /** @type {HTMLButtonElement[]} */
     const chips = Array.from(document.querySelectorAll('.chip[data-filter]'));
-    if (cards.length === 0 || chips.length === 0) {
-        throw new Error('articles.js expects #article-cards .card elements and .chip[data-filter] buttons');
+    if (entries.length === 0 || chips.length === 0) {
+        throw new Error('articles.js expects #article-list .entry elements and .chip[data-filter] buttons');
     }
 
     /**
@@ -16,16 +16,14 @@
     const matchesFilter = (category, filter) => filter === 'all' || category === filter;
 
     /**
-     * Shows cards in the chosen category and widens the first visible one into the featured card.
+     * Shows entries in the chosen topic.
      * @param {string} filter
      * @returns {void}
      */
     const applyFilter = (filter) => {
-        cards.forEach((card) => {
-            card.hidden = !matchesFilter(card.dataset.category ?? '', filter);
+        entries.forEach((entry) => {
+            entry.hidden = !matchesFilter(entry.dataset.category ?? '', filter);
         });
-        const firstVisible = cards.find((card) => !card.hidden);
-        cards.forEach((card) => card.classList.toggle('is-featured', card === firstVisible));
     };
 
     chips.forEach((chip) => {
