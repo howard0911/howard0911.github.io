@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Serif "H" monogram (DESIGN.md: burgundy accent, paper text). Drawn as a path so it needs no font. -->
+  <style>
+    .bg { fill: #8A1C2B; }
+    .fg { fill: #F7F4EE; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #D97A86; }
+      .fg { fill: #141311; }
+    }
+  </style>
+  <rect class="bg" width="32" height="32" rx="2" />
+  <path class="fg" d="M7.5 7H14.5V8.5H12.5V15H19.5V8.5H17.5V7H24.5V8.5H22.5V23.5H24.5V25H17.5V23.5H19.5V17H12.5V23.5H14.5V25H7.5V23.5H9.5V8.5H7.5Z" />
+</svg>
