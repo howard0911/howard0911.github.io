@@ -22,6 +22,7 @@ python -m http.server 8000
 ### Page Structure
 - `index.html` — Landing/home page
 - `about.html` — Professional bio, experience, skills
+- `projects.html` — Project timeline (apps, research, coursework)
 - `articles.html` — Article listing index
 - `albums.html` — Photo album index; one card per album in `travel/`
 - `contact.html` — Contact and resume

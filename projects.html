@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Projects by Howard (Sheng-Hau) Peng: AI apps, machine learning, NLP and quantitative finance research." />
+        <meta name="author" content="Howard Peng" />
+        <title>Projects · Howard Peng</title>
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+        <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+        <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+        <!-- Fonts: Source Serif 4 + Noto Serif TC (reading), IBM Plex Sans + Noto Sans TC (UI), IBM Plex Mono (dates and numbers). See DESIGN.md -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet" />
+        <link href="css/site.css" rel="stylesheet" />
+        <script src="js/theme.js"></script>
+    </head>
+    <body>
+        <div class="nav-slot" data-include="partials/nav.html"></div>
+        <main>
+            <section class="page-head">
+                <div class="container">
+                    <p class="kicker">Projects</p>
+                    <h1>Things I've built</h1>
+                    <p class="lede">Apps, research and coursework, from AI products to machine learning and quantitative finance.</p>
+                </div>
+            </section>
+
+            <section class="section" aria-label="Projects">
+                <div class="container">
+                    <ol class="timeline">
+                        <li class="tl-item">
+                            <div class="tl-date">2026.11</div>
+                            <div>
+                                <h3 class="tl-role">Which Card? - Credit Card Reward Picker</h3>
+                                <p class="tl-links"><a href="https://cardpick-eight.vercel.app" target="_blank">Live Demo</a></p>
+                                <ul class="tags"><li class="tag">Product Design</li><li class="tag">Expo</li><li class="tag">React Native</li><li class="tag">TypeScript</li><li class="tag">Supabase</li><li class="tag">LLM App</li><li class="tag">Deployment</li></ul>
+                                <ul>
+                                    <li>Designed and shipped a bilingual (Traditional Chinese + English) web app that ranks a user's credit cards for any store at checkout, factoring in point valuations and quarterly rotating categories.</li>
+                                    <li>Built wallet, statement-credit tracking, and wishlist features on top of a US card catalog whose welcome offers link to each issuer's official site; the catalog lives in Postgres so card data can be updated without a release.</li>
+                                    <li>Implemented Google and email sign-in with cross-device sync on Supabase, with row level security on every table, while letting signed-out users keep their data on the device.</li>
+                                    <li>Added AI merchant categorization through a Supabase Edge Function calling Groq LLMs when the keyword list doesn't recognize a store, and deployed the Expo web build to Vercel from a single codebase that will later ship to iOS and Android.</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="tl-item">
+                            <div class="tl-date">2025.11</div>
+                            <div>
+                                <h3 class="tl-role">Daily Digest - AI News Summarizer</h3>
+                                <p class="tl-links"><a href="https://github.com/howard0911/news-summary" target="_blank">GitHub</a><a href="https://news-summary-teno.onrender.com/" target="_blank">Live Demo</a></p>
+                                <ul class="tags"><li class="tag">AI Product Design</li><li class="tag">LLM App</li><li class="tag">Full-Stack Prototyping</li><li class="tag">Python</li><li class="tag">HTML</li><li class="tag">API Integration</li><li class="tag">Deployment</li></ul>
+                                <ul>
+                                    <li>Designed and shipped a lightweight AI news dashboard that aggregates Google News or curated RSS sources (BBC, CNN, NYT, Guardian, WSJ, etc.) and generates “Today’s Key Points” with bilingual summaries (English + optional Chinese translation) powered by fast Groq LLMs.</li>
+                                    <li>Built a flexible LLM backend with an automatic provider switch (Groq / OpenAI / local Ollama), enabling rapid iteration across models and cost/performance tradeoffs through environment-based configuration.</li>
+                                    <li>Product-designed a modern user experience with responsive UI, dark mode, loading skeleton screens, and city-level geolocation detection to personalize news context (e.g., “Chicago, United States”).</li>
+                                    <li>Productionized the prototype with clear project structure, dependency management, and deployment readiness (Dockerfile + Procfile + start scripts), making the app easy to run locally and deploy to platforms like Railway/Render.</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="tl-item">
+                            <div class="tl-date">2024.03 &mdash; 2024.06</div>
+                            <div>
+                                <h3 class="tl-role"><a href="https://github.com/howard0911/Diffusion-Model-for-MNIST-Data">Diffusion Model for MNIST Data</a></h3>
+                                <ul class="tags"><li class="tag">Python</li><li class="tag">Diffusion Model</li><li class="tag">Deep Learning</li><li class="tag">PyTorch</li><li class="tag">Hyperparameters Tuning</li></ul>
+                                <ul>
+                                    <li>Implemented Denoising Diffusion Probabilistic Models paper, employing UNet architecture to predict conditional mean and error term, achieving clearer image synthesis with the error term model.</li>
+                                    <li>Demonstrated model differences in output, sampling process, and loss function; Model size: 4.3 MB; Training time: 20 secs per epoch.</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="tl-item">
+                            <div class="tl-date">2023.09 &mdash; 2024.04</div>
+                            <div>
+                                <h3 class="tl-role"><a href="https://drive.google.com/file/d/1Xmne06vjN7Chwsc7EWg9TU8_8IDxlbUu/view?usp=drive_link">Optimizing Sentiment Analysis: An Alternative Way to Revisit SESTM Algorithm</a></h3>
+                                <ul class="tags"><li class="tag">Python</li><li class="tag">MatLab</li><li class="tag">Big Data</li><li class="tag">Sentiment Analysis</li><li class="tag">Text Mining</li><li class="tag">Hyperparameters Tuning</li></ul>
+                                <ul>
+                                    <li>Designed and optimized a large-scale NLP pipeline based on the SESTM methodology to extract sentiment signals from 25M+ Dow Jones news articles and predict asset returns, transforming academic text-mining research into a production-level financial signal system.</li>
+                                    <li>Established model benchmarking and optimization standards through systematic hyperparameter tuning, achieving an annualized Sharpe ratio of 5.02 vs. 4.21 baseline, validating both the statistical robustness and real-world trading value of the AI-driven signal.</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="tl-item">
+                            <div class="tl-date">2023.03 &mdash; 2023.06</div>
+                            <div>
+                                <h3 class="tl-role"><a href="https://drive.google.com/file/d/11MU6NUqg5LmWeE2AO7QHg_nbDwqdY_0n/view?usp=drive_link">Big Data - Loan Default Analysis</a></h3>
+                                <ul class="tags"><li class="tag">R</li><li class="tag">Big Data</li><li class="tag">Machine Learning</li><li class="tag">Credit Risk Modeling</li><li class="tag">PCA</li><li class="tag">LASSO</li><li class="tag">Clustering</li><li class="tag">Product-Oriented Analytics</li></ul>
+                                <ul>
+                                    <li>Designed an end-to-end credit risk analytics pipeline on 30K+ credit card customer records, performing data extraction, EDA, and feature engineering to support data-driven loan decision frameworks.</li>
+                                    <li>Built and evaluated predictive models (Logistic Regression, Random Forest) using LASSO and PCA for feature selection, achieving 82.09% accuracy and translating model outputs into actionable risk indicators.</li>
+                                    <li>Applied clustering techniques (K-Means, Hierarchical Clustering) to define customer risk segments and uncover key behavioral patterns, strengthening segmentation strategies for credit and marketing products.</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="tl-item">
+                            <div class="tl-date">2021.02 &mdash; 2021.06</div>
+                            <div>
+                                <h3 class="tl-role"><a href="https://drive.google.com/file/d/1L5Lypi_XPiKJilt1z8VXZZzWH4IeffI7/view?usp=drive_link">Automatic Market Making(AMM) Research Project</a></h3>
+                                <ul class="tags"><li class="tag">AMM</li><li class="tag">DeFi</li><li class="tag">Liquidity Mining</li><li class="tag">Market Design</li><li class="tag">On-chain Simulation</li><li class="tag">Product-Oriented Financial Systems</li></ul>
+                                <ul>
+                                    <li>Designed and evaluated multiple Automatic Market Making (AMM) mechanisms and liquidity mining models, translating theoretical market design into system-level architectures for decentralized trading platforms.</li>
+                                    <li>Built on-chain data simulations to model market-making behavior and liquidity dynamics, validating mechanism performance under different market conditions and usage scenarios.</li>
+                                    <li>Applied dynamic equilibrium models to decentralized finance systems to inform pricing stability, liquidity efficiency, and protocol design decisions.</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="tl-item">
+                            <div class="tl-date">2021.02 &mdash; 2021.06</div>
+                            <div>
+                                <h3 class="tl-role"><a href="https://drive.google.com/file/d/1lBoSNtpUiNghitPs-qWqexISNlhBkUgs/view?usp=drive_link">Big Data Marketing Analysis</a></h3>
+                                <ul class="tags"><li class="tag">SPSS</li><li class="tag">Big Data</li><li class="tag">RFM Analysis</li><li class="tag">CAI &amp; CRI</li><li class="tag">Customer Segmentation</li><li class="tag">Recommendation Systems</li><li class="tag">Product-Oriented Analytics</li></ul>
+                                <ul>
+                                    <li>Designed a data-driven marketing analytics system using 4,481 supermarket transaction records (2009–2010), applying RFM, CAI, CRI, basket analysis, and clustering to translate raw transaction data into actionable customer insights.</li>
+                                    <li>Built a customer scoring and segmentation framework that quantified purchasing behavior and enabled targeted marketing, recommendation strategies, and personalized customer engagement.</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="tl-item">
+                            <div class="tl-date">2020.09 &mdash; 2021.01</div>
+                            <div>
+                                <h3 class="tl-role"><a href="https://drive.google.com/file/d/1fyUb3xLUxTDAUjmk7k4BBXhpjiQWtoqm/view?usp=drive_link">Text Mining DNN Model Analysis</a></h3>
+                                <ul class="tags"><li class="tag">Python</li><li class="tag">NLP</li><li class="tag">Deep Learning</li><li class="tag">PyTorch</li><li class="tag">BERT</li><li class="tag">Time Series Forecasting</li><li class="tag">AI System Design</li></ul>
+                                <ul>
+                                    <li>Designed an end-to-end NLP pipeline by combining TF-IDF, Word2Vec, and BERT embeddings to transform large-scale unstructured text into high-quality numerical representations for downstream prediction tasks.</li>
+                                    <li>Built and optimized a deep neural network (DNN) forecasting system in PyTorch to predict Australia’s 30-year government bond yield using 1M+ news headlines over 17 years, achieving 95% accuracy and 0.005 MSE through systematic hyperparameter tuning.</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="tl-item">
+                            <div class="tl-date">2020.09 &mdash; 2021.01</div>
+                            <div>
+                                <h3 class="tl-role"><a href="https://drive.google.com/file/d/174oh_EKVdpQ033GwTgWhdRlXtjtt7Y9n/view?usp=drive_link">Telecom DCB Service Optimization</a></h3>
+                                <ul class="tags"><li class="tag">R</li><li class="tag">Regression Modeling</li><li class="tag">GLM</li><li class="tag">RFM Analysis</li><li class="tag">Customer Segmentation</li><li class="tag">Product Optimization</li></ul>
+                                <ul>
+                                    <li>Designed and built a data-driven optimization system for a telecom Direct Carrier Billing (DCB) service by developing a robust Generalized Linear Model (GLM) in R to identify key drivers of user adoption and transaction performance.</li>
+                                    <li>Translated model insights into actionable marketing and product strategies, defining customer segments and targeting approaches that supported service growth and improved monetization efficiency.</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="tl-item">
+                            <div class="tl-date">2019.09 &mdash; 2019.11</div>
+                            <div>
+                                <h3 class="tl-role"><a href="https://drive.google.com/file/d/1kV664flkANfgivRHZLQ0X1j6W_QpgPhK/view?usp=drive_link">Specific Application of Copula Model, Loss Distribution Approach model (LDA)</a></h3>
+                                <ul>
+                                    <li>Presented how dependence between risks is important for a fair quantification of the economic capital and introduced the use of copulas to model this dependence.</li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+        </main>
+        <div data-include="partials/footer.html"></div>
+        <script src="js/layout.js"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

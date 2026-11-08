@@ -5,7 +5,8 @@ Source code for my personal website, live at [howard0911.github.io](https://howa
 ## What's on the site
 
 - **Home**: a short introduction and the three newest articles.
-- **About**: my experience, education, projects, technical skills, extracurriculars and awards.
+- **About**: my experience, education, technical skills, extracurriculars and awards.
+- **Projects**: apps, research and coursework I have built, with links to code and live demos.
 - **Articles**: writing (mostly in Traditional Chinese) on studying abroad, DeFi and blockchain, and quantum computing, filterable by topic. Each article has an auto-generated table of contents.
 - **Albums**: interactive travel photo albums, one per trip, whose colors, type and synthesized sound come from the photos.
 - **Contact**: email, LinkedIn and my latest resume.
