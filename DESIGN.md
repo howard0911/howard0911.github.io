@@ -12,7 +12,7 @@
 - **Decoration level:** Minimal. Hairline rules, numbered sections, dates set in the margin. Typography does the work.
 - **Mood:** Calm, literate, precise. Paper, ink and one burgundy.
 - **Reference sites:** https://craigmod.com, https://maggieappleton.com, https://www.robinsloan.com
-- **Never use:** box shadows, gradients (including radial glows), pill-shaped tags or buttons (`border-radius: 999px`), glass/backdrop blur outside the nav, dot-grid backgrounds, hover lift (`translateY`), image zoom on hover, arrow nudges, initials-in-a-gradient avatars, uppercase letter-spaced mono "kicker" labels, three-equal-card rows, "Building X for Y" headline copy.
+- **Never use:** box shadows, gradients (including radial glows), pill-shaped tags or buttons (`border-radius: 999px`), glass/backdrop blur outside the nav, dot-grid backgrounds, hover lift (`translateY` on hover), image zoom on hover, scroll-linked parallax, arrow nudges, initials-in-a-gradient avatars, uppercase letter-spaced mono "kicker" labels, three-equal-card rows, "Building X for Y" headline copy.
 
 ## Typography
 - **Display and reading:** Source Serif 4 (Latin) + Noto Serif TC (CJK). Source Serif and Source Han Serif / Noto Serif TC are one Adobe family, so mixed English and Chinese lines share stroke weight and rhythm. Stack: `"Source Serif 4", "Noto Serif TC", serif`.
@@ -64,7 +64,7 @@
 - **Approach:** Editorial with a margin column. Home, writing index and albums index use a two-column grid: a 170px margin column (mono dates, counts, labels) + content, 32px gap. Article pages are a single centered 680px column.
 - **Max container width:** 1120px, 24px side padding (18px on mobile).
 - **Breakpoint:** At ≤760px the margin column stacks above its content and grids collapse to one column.
-- **Home:** Nav, first-person intro (headline, short paragraph, inline text links to Resume / LinkedIn / Email), one wide travel photo (16:6.5) with a mono caption, writing index of the five newest articles as a table of contents (date | Chinese title + English gloss | topic), album thumbnails (4:5).
+- **Home:** Nav, first-person intro (headline, short paragraph, inline text links to Resume / LinkedIn / Email), one wide travel photo (16:6.5) with a mono caption, writing index of the five newest articles as a table of contents (date | Chinese title + English gloss | topic), album thumbnails (4:5), three per row (two on phones).
 - **Writing index:** Ordered list with a 1px ink rule on top and hairline rules between rows. No cards, no cover thumbnails.
 - **Article:** Meta line (mono date · topic · read time), title, English deck line, numbered sections (`01`, `02` in mono accent), blockquote with a 1px ink left rule, formula blocks in mono on `--paper-2` with a 2px accent left rule. Margin notes sit outside the column at ≥1180px and inline below the paragraph otherwise.
 - **Border radius:** 0 for images, blocks and inputs; 2px for buttons. Nothing rounder.
@@ -73,7 +73,8 @@
 ## Components
 - **Nav:** Name in serif 600 on the left; page links in sans on the right, muted; the current item is ink with a 2px accent underline. A 1px rule below.
 - **Liquid glass (nav only):** The sticky nav is the one glass surface on the site: `--glass` (paper at 70%, 66% in dark) with `backdrop-filter: blur(18px) saturate(170%)` and a 1px inset top highlight (`--glass-edge`) as its specular edge. No drop shadow, no rounded capsule. Without `backdrop-filter` support it falls back to solid paper. The mobile menu panel is solid paper.
-- **Links:** Underlined, underline in `--rule` at rest and `--accent` on hover, text turns accent on hover.
+- **Links:** Underlined, underline in `--rule` at rest; on hover an `--accent` line draws over it from the left and the text turns accent. Article body links keep a plain accent underline.
+- **Album covers:** Each cover frame holds a second photo from the same album, which fades in on hover. No zoom, no lift.
 - **Buttons:** Primary is ink-filled with paper text (hover: accent fill). Secondary is a 1px ink outline (hover: `--paper-2` fill). Text buttons are underlined links. Height 42px (44px under `pointer: coarse`).
 - **Category filter:** Plain text tabs with a mono count; the active tab is ink with a 2px accent bottom border. No pills.
 - **Inputs:** Square, `--surface` fill, hairline border with an ink bottom border; error state turns the bottom border and hint text to the error color.
@@ -81,8 +82,23 @@
 - **Focus:** 2px accent outline, 2px offset, on every interactive element.
 
 ## Motion
-- **Approach:** Minimal-functional. Only color transitions on links, buttons and tabs (150ms ease-out). No transforms, no entrance animations.
-- **Reduced motion:** Disable transitions under `prefers-reduced-motion: reduce`.
+- **Approach:** Ink and paper. Motion draws lines, develops photos and lets words arrive; nothing bounces, lifts, zooms or tilts. Each effect runs once, or answers the pointer.
+- **Curve:** `--ease-out` (`cubic-bezier(.22, 1, .36, 1)`) for everything new; color-only hovers may stay at 150ms.
+- **Inventory** (CSS in `css/site.css`, Motion; state classes from `js/motion.js`):
+
+| Effect | Where | What moves | Timing |
+|---|---|---|---|
+| Page cross-fade | Every same-site link | The whole page, via `@view-transition` | 320ms |
+| Link underline | `.text-link`, `.plain-list a` | An accent line draws left to right over the rule | 450ms |
+| Index row | `.entry` (home, Articles) | Its bottom rule redraws in accent; the date turns accent | 500ms |
+| Headline entrance | Home intro (`data-enter`), once on load | Words fade in and rise 0.35em, 45ms apart; the lines under it follow | about 1.5s |
+| List reveal | `.index-list`, once when scrolled into view | The top rule draws in, then rows fade in 70ms apart | about 1.5s |
+| Photo develops | `.home-photo`, once when scrolled into view | Grey and pale to full color | 2.2s |
+| Album cover | `.album` hover | The second photo fades in | 500ms |
+| Reading progress | Article pages | A 2px accent line under the nav grows with the scroll | per frame |
+
+- **Rules:** Animate only `transform`, `opacity` and `filter`. Nothing replays on scroll back. No scroll-linked motion other than the reading-progress line. Rows revealed later by a filter appear at once.
+- **Reduced motion:** Under `prefers-reduced-motion: reduce` every transition and animation is off, `js/motion.js` does nothing, the page cross-fade and the reading-progress line are off, and every element shows in its final state.
 
 ## Copy
 - First person, specific, short. Say what Howard actually does and studied; no category slogans.
@@ -97,3 +113,5 @@
 | 2026-11-05 | Replace Inter and JetBrains Mono with Source Serif 4, Noto Serif TC, IBM Plex Sans and IBM Plex Mono | Inter is the default face of templated sites; the serif pairing gives English and Chinese one voice |
 | 2026-11-05 | Liquid glass kept on the sticky nav only | Owner asked to keep the glass effect |
 | 2026-11-05 | Agent defaults, not yet reviewed by the owner: semantic colors, type scale, justified Chinese body, English gloss wording | Set during /design-consultation; change freely |
+| 2026-11-11 | Motion layer added: page cross-fade, drawn underlines and row rules, headline entrance, list reveal, photo develop, album cover turn, reading progress | Owner reviewed all eight in a live demo and kept every one; replaces "color transitions only" |
+| 2026-11-11 | Home albums three per row instead of six | Titles and photo counts wrapped at six per row |

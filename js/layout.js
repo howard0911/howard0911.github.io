@@ -1,11 +1,15 @@
+// Renders the shared nav and footer into every [data-include] slot.
+// Runs synchronously at the end of <body>, so both are in place before the first paint and
+// cross-page view transitions (css/site.css) never capture a page without its nav.
+// This file is the only copy of the nav and footer markup.
 (() => {
     const includeTargets = Array.from(document.querySelectorAll('[data-include]'));
     if (!includeTargets.length) {
         return;
     }
 
-    // Static fallbacks in case fetch() is blocked (e.g., file:// preview). Keep in sync with partials/*.html.
-    const fallbacks = {
+    /** @type {Readonly<Record<string, string>>} Keyed by the slot's data-include value */
+    const partials = Object.freeze({
         'partials/nav.html': `
 <header class="site-nav" id="site-nav">
     <div class="container nav-inner">
@@ -42,24 +46,18 @@
         </ul>
     </div>
 </footer>`.trim()
-    };
-
-    const loadPartial = async (el) => {
-        const path = el.getAttribute('data-include');
-        if (!path) return;
-        try {
-            const response = await fetch(path);
-            if (!response.ok) throw new Error(`Failed to load partial: ${path}`);
-            el.innerHTML = await response.text();
-        } catch (err) {
-            console.error(err);
-            if (fallbacks[path]) {
-                el.innerHTML = fallbacks[path];
-            }
-        }
-    };
-
-    Promise.all(includeTargets.map(loadPartial)).then(() => {
-        document.dispatchEvent(new Event('partials:loaded'));
     });
+
+    /** @param {Element} slot */
+    const renderPartial = (slot) => {
+        const key = slot.getAttribute('data-include');
+        const html = key === null ? undefined : partials[key];
+        if (html === undefined) {
+            throw new Error(`layout.js has no partial for data-include="${key}"`);
+        }
+        slot.innerHTML = html;
+    };
+
+    includeTargets.forEach(renderPartial);
+    document.dispatchEvent(new Event('partials:loaded'));
 })();

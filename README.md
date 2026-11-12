@@ -15,7 +15,7 @@ The site supports light and dark mode and works on phones.
 
 ## How it's built
 
-Plain HTML, CSS and JavaScript, with no framework and no build step. The navigation and footer are shared partials in `partials/`, injected by `js/layout.js`. All styling is in `css/site.css`.
+Plain HTML, CSS and JavaScript, with no framework and no build step. The navigation and footer are rendered into every page by `js/layout.js`. All styling is in `css/site.css`.
 
 The travel albums live in their own repository, [photo-albums](https://github.com/howard0911/photo-albums), mounted here as the `travel/` git submodule.
 
