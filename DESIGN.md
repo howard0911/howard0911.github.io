@@ -8,11 +8,11 @@
 - **Language:** English for navigation, home, About, contact and all UI text. Article bodies are Chinese (zh-Hant). Every Chinese article title gets a one-line English gloss wherever it is listed.
 
 ## Aesthetic Direction
-- **Direction:** Notebook. A self-published bilingual journal: the clarity of a math notebook with the warmth of a printed book.
-- **Decoration level:** Minimal. Hairline rules, numbered sections, dates set in the margin. Typography does the work.
-- **Mood:** Calm, literate, precise. Paper, ink and one burgundy.
+- **Direction:** Notebook on grainy paper. A self-published bilingual journal: the clarity of a math notebook with the warmth of a printed book, set on a soft, grainy gradient backdrop.
+- **Decoration level:** Minimal on content, one atmospheric layer behind it. Hairline rules, numbered sections, dates set in the margin; typography does the work. The grainy gradient backdrop is the only gradient on the site.
+- **Mood:** Calm, literate, precise. Warm grainy paper, ink and one burgundy.
 - **Reference sites:** https://craigmod.com, https://maggieappleton.com, https://www.robinsloan.com
-- **Never use:** box shadows, gradients (including radial glows), pill-shaped tags or buttons (`border-radius: 999px`), glass/backdrop blur outside the nav, dot-grid backgrounds, hover lift (`translateY` on hover), image zoom on hover, scroll-linked parallax, arrow nudges, initials-in-a-gradient avatars, uppercase letter-spaced mono "kicker" labels, three-equal-card rows, "Building X for Y" headline copy.
+- **Never use:** box shadows, gradients on content or UI (the backdrop is the one exception; flat color layers drawn as gradients for underlines and button fills are not gradients), pill-shaped tags or buttons (`border-radius: 999px`), glass/backdrop blur outside the nav, dot-grid backgrounds, hover lift (`translateY` on hover), image zoom on hover, scroll-linked parallax, arrow nudges, initials-in-a-gradient avatars, uppercase letter-spaced mono "kicker" labels, three-equal-card rows, "Building X for Y" headline copy.
 
 ## Typography
 - **Display and reading:** Source Serif 4 (Latin) + Noto Serif TC (CJK). Source Serif and Source Han Serif / Noto Serif TC are one Adobe family, so mixed English and Chinese lines share stroke weight and rhythm. Stack: `"Source Serif 4", "Noto Serif TC", serif`.
@@ -45,13 +45,18 @@
 | `--surface` | `#FFFDF8` | `#1A1816` | Form fields |
 | `--ink` | `#1A1A1A` | `#E8E4DC` | Headings, primary text, strong rules |
 | `--ink-body` | `#2A2724` | `#D6D1C7` | Long-form body text |
-| `--muted` | `#6B6560` | `#9A938A` | Dates, meta, glosses, captions |
+| `--muted` | `#55504B` | `#9A938A` | Dates, meta, glosses, captions |
 | `--rule` | `#D9D3C7` | `#2E2B27` | Hairlines, link underlines at rest |
 | `--accent` | `#8A1C2B` | `#D97A86` | Burgundy |
 | `--on-ink` | `#F7F4EE` | `#141311` | Text on ink-filled buttons |
+| `--blob-1` | `#F8DDB0` | `#5C2A34` | Backdrop blob: golden cream / dark wine |
+| `--blob-2` | `#F0BFC8` | `#3D2B36` | Backdrop blob: rose / dark plum |
+| `--blob-3` | `#F8CBA8` | `#55341F` | Backdrop blob: peach / dark umber |
+| `--grain-opacity` | `.09` | `.07` | Film grain strength (the grain is inverted in dark mode) |
 
 - **Semantic (text color, used as a small label, never as a filled box):** success `#3F6B4A` / `#8DB89A`, warning `#8A5A12` / `#D7A85B`, error `#A3342A` / `#E08A7F`, info `#33557A` / `#8FB0D4`.
-- **Contrast (WCAG):** ink/paper 15.9, body/paper 13.5, muted/paper 5.2, muted/paper-2 4.8, accent/paper 8.4; dark: ink 14.6, muted 6.1, accent 6.3. Semantic colors are 5.4 or higher on paper in both themes.
+- **Backdrop:** Four soft radial blobs (`--blob-1` to `--blob-3`) over `--paper`, with SVG fractal-noise grain on top, both `position: fixed` behind the page (`body::before` and `body::after` in `css/site.css`). Blobs stay light in light mode so text keeps at least 4.5:1 on the darkest spot (muted worst case about 5.0). Text never sits on a filled box; the backdrop shows through.
+- **Contrast (WCAG):** ink/paper 15.9, body/paper 13.5, muted/paper 7.4, muted/paper-2 6.9, accent/paper 8.4; dark: ink 14.6, muted 6.1, accent 6.3. Semantic colors are 5.4 or higher on paper in both themes.
 - **Dark mode:** Follows the OS until the visitor toggles it (`html[data-theme]`, as today). Warm near-black paper; the accent becomes a lighter rose so it keeps contrast.
 
 ## Spacing
@@ -71,18 +76,18 @@
 - **Images:** Real photos only. The profile image is a real photo, not initials.
 
 ## Components
-- **Nav:** Name in serif 600 on the left; page links in sans on the right, muted; the current item is ink with a 2px accent underline. A 1px rule below.
+- **Nav:** Name in serif 600 on the left; page links in sans on the right, muted; the current item is ink with a 2px accent underline; on hover an accent line draws in from the left. A 1px rule below.
 - **Liquid glass (nav only):** The sticky nav is the one glass surface on the site: `--glass` (paper at 70%, 66% in dark) with `backdrop-filter: blur(18px) saturate(170%)` and a 1px inset top highlight (`--glass-edge`) as its specular edge. No drop shadow, no rounded capsule. Without `backdrop-filter` support it falls back to solid paper. The mobile menu panel is solid paper.
 - **Links:** Underlined, underline in `--rule` at rest; on hover an `--accent` line draws over it from the left and the text turns accent. Article body links keep a plain accent underline.
 - **Album covers:** Each cover frame holds a second photo from the same album, which fades in on hover. No zoom, no lift.
-- **Buttons:** Primary is ink-filled with paper text (hover: accent fill). Secondary is a 1px ink outline (hover: `--paper-2` fill). Text buttons are underlined links. Height 42px (44px under `pointer: coarse`).
+- **Buttons:** Primary is ink-filled with paper text (hover: accent fill sweeps in from the left). Secondary is a 1px ink outline (hover: `--paper-2` fill sweeps in from the left). Text buttons are underlined links. Height 42px (44px under `pointer: coarse`).
 - **Category filter:** Plain text tabs with a mono count; the active tab is ink with a 2px accent bottom border. No pills.
 - **Inputs:** Square, `--surface` fill, hairline border with an ink bottom border; error state turns the bottom border and hint text to the error color.
 - **Notes:** A mono label in the semantic color + sans text, separated by a hairline. No colored boxes or icons.
 - **Focus:** 2px accent outline, 2px offset, on every interactive element.
 
 ## Motion
-- **Approach:** Ink and paper. Motion draws lines, develops photos and lets words arrive; nothing bounces, lifts, zooms or tilts. Each effect runs once, or answers the pointer.
+- **Approach:** Ink and paper, with a slowly moving backdrop. Motion draws lines, develops photos, lets words arrive and lets the light behind the page drift; nothing bounces, lifts, zooms or tilts. Each content effect runs once, or answers the pointer.
 - **Curve:** `--ease-out` (`cubic-bezier(.22, 1, .36, 1)`) for everything new; color-only hovers may stay at 150ms.
 - **Inventory** (CSS in `css/site.css`, Motion; state classes from `js/motion.js`):
 
@@ -96,9 +101,16 @@
 | Photo develops | `.home-photo`, once when scrolled into view | Grey and pale to full color | 2.2s |
 | Album cover | `.album` hover | The second photo fades in | 500ms |
 | Reading progress | Article pages | A 2px accent line under the nav grows with the scroll | per frame |
+| Backdrop drift | Every page, `body::before` | The blobs translate, scale and rotate a few percent, back and forth | 48s loop |
+| Backdrop lean | Every page with a hover pointer | The blobs shift up to 28px toward the pointer (`--mx`, `--my`) | 1.4s ease |
+| Grain breathing | Every page, `body::after` | Grain opacity moves between 70% and 100% of `--grain-opacity` | 7s loop |
+| Section rise | Page heads, section heads, timeline items, education rows, contact cards, album covers, article `h2` | Fade in and rise 14px once on first view; siblings 70ms apart | 800ms |
+| Button fill | `.btn` | A flat color sweeps in from the left | 450ms |
+| Nav link line | `.nav-links a` | An accent line draws in under a hovered link | 400ms |
+| Album saturation | `.album` hover | Both photos gain 15% saturation, with the second-photo fade | 600ms |
 
-- **Rules:** Animate only `transform`, `opacity` and `filter`. Nothing replays on scroll back. No scroll-linked motion other than the reading-progress line. Rows revealed later by a filter appear at once.
-- **Reduced motion:** Under `prefers-reduced-motion: reduce` every transition and animation is off, `js/motion.js` does nothing, the page cross-fade and the reading-progress line are off, and every element shows in its final state.
+- **Rules:** Animate only `transform`, `translate`, `opacity`, `filter` and the flat-fill `background-size` of underlines and buttons. Nothing replays on scroll back. No scroll-linked motion other than the reading-progress line; the backdrop lean follows the pointer, never the scroll. Rows revealed later by a filter appear at once.
+- **Reduced motion:** Under `prefers-reduced-motion: reduce` every transition and animation is off, `js/motion.js` does nothing, the page cross-fade and the reading-progress line are off, and the backdrop stays as a still gradient with grain, and every element shows in its final state.
 
 ## Copy
 - First person, specific, short. Say what Howard actually does and studied; no category slogans.
@@ -115,3 +127,4 @@
 | 2026-11-05 | Agent defaults, not yet reviewed by the owner: semantic colors, type scale, justified Chinese body, English gloss wording | Set during /design-consultation; change freely |
 | 2026-11-11 | Motion layer added: page cross-fade, drawn underlines and row rules, headline entrance, list reveal, photo develop, album cover turn, reading progress | Owner reviewed all eight in a live demo and kept every one; replaces "color transitions only" |
 | 2026-11-11 | Home albums three per row instead of six | Titles and photo counts wrapped at six per row |
+| 2026-11-13 | Grainy gradient backdrop (warm paper palette) and more motion: backdrop drift, pointer lean and grain breathing, section rise, button fill, nav link line | Owner asked to move from flat paper to a grainy gradient look with more motion; supersedes the "no gradients" and "minimal decoration" rules for the backdrop only. `--muted` darkened to `#55504B` so it holds 4.5:1 on the blobs |

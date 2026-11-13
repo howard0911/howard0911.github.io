@@ -1,5 +1,6 @@
 // Motion layer (DESIGN.md, Motion): the home headline's entrance, list rules that draw in,
-// the home photograph that develops, and the reading-progress line on article pages.
+// the home photograph that develops, sections that rise in, the backdrop that leans toward
+// the pointer, and the reading-progress line on article pages.
 // Each part runs only on pages that have its element. Under prefers-reduced-motion nothing
 // runs and every element stays in its final, visible state.
 (() => {
@@ -99,6 +100,36 @@
     if (homePhoto !== null) {
         homePhoto.classList.add('is-developing');
         revealObserver.observe(homePhoto);
+    }
+
+    // Page furniture rises in once, the first time it scrolls into view. Album covers and
+    // contact cards in the same grid share a stagger.
+    const REVEAL_SELECTOR = '.page-head .container > *, .section-head, .tl-item, .edu, .contact-card, .album, .prose h2';
+    document.querySelectorAll(REVEAL_SELECTOR).forEach((item) => {
+        if (!(item instanceof HTMLElement)) return;
+        const siblings = Array.from(item.parentElement?.children ?? []).filter((sibling) => sibling.matches(REVEAL_SELECTOR));
+        item.style.setProperty('--i', String(Math.min(siblings.indexOf(item), MAX_STAGGERED_ROWS)));
+        item.classList.add('reveal');
+        revealObserver.observe(item);
+    });
+
+    // The backdrop leans toward the pointer: --mx and --my run from -1 to 1 across the window,
+    // written at most once per frame. Touch screens have no hover, so they skip it.
+    if (window.matchMedia('(hover: hover)').matches) {
+        let pointerFramePending = false;
+        let lastX = 0;
+        let lastY = 0;
+        window.addEventListener('pointermove', (event) => {
+            lastX = (event.clientX / window.innerWidth) * 2 - 1;
+            lastY = (event.clientY / window.innerHeight) * 2 - 1;
+            if (pointerFramePending) return;
+            pointerFramePending = true;
+            window.requestAnimationFrame(() => {
+                pointerFramePending = false;
+                document.documentElement.style.setProperty('--mx', lastX.toFixed(3));
+                document.documentElement.style.setProperty('--my', lastY.toFixed(3));
+            });
+        }, { passive: true });
     }
 
     // Article pages: a progress line under the nav, updated at most once per frame.
