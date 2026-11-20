@@ -35,12 +35,14 @@
                             <div>
                                 <h3 class="tl-role">Which Card? - Credit Card Reward Picker</h3>
                                 <p class="tl-links"><a href="https://whichcard.shenghaupeng.com/" target="_blank">Live Demo</a></p>
-                                <ul class="tags"><li class="tag">Product Design</li><li class="tag">Expo</li><li class="tag">React Native</li><li class="tag">TypeScript</li><li class="tag">Supabase</li><li class="tag">LLM App</li><li class="tag">Deployment</li></ul>
+                                <ul class="tags"><li class="tag">Product Design</li><li class="tag">Expo</li><li class="tag">React Native</li><li class="tag">TypeScript</li><li class="tag">Supabase</li><li class="tag">LLM App</li><li class="tag">GitHub Actions</li><li class="tag">Deployment</li></ul>
                                 <ul>
-                                    <li>Designed and shipped a web app that ranks a user's credit cards for any merchant or category at checkout, factoring in point valuations, quarterly rotating categories, and custom spending categories with user-defined keywords.</li>
-                                    <li>Built wallet management (supporting both catalog and custom cards, editable reward rules, and custom points programs valued in cents per point), statement-credit tracking, and a wishlist on top of a Postgres-backed US card catalog that updates without a new release.</li>
-                                    <li>Implemented Google OAuth sign-in with cross-device sync and in-app account deletion on Supabase (protected by row-level security on every table), while providing signed-out visitors an interactive welcome demo and a stateless guest mode.</li>
-                                    <li>Added AI merchant categorization through a Supabase Edge Function calling Groq LLMs when built-in and custom keywords don't recognize a store, and deployed the Expo web build to Vercel from a single codebase shared with future iOS and Android targets.</li>
+                                    <li>Designed and shipped a bilingual (Traditional Chinese and English) web app that ranks a user's credit cards for any merchant or category at checkout, factoring in point valuations, quarterly rotating categories, and custom spending categories and points programs defined by the user.</li>
+                                    <li>Built wallet management (catalog and custom cards, editable reward rules), statement-credit tracking, and a wishlist with issuer links on top of a Postgres-backed US card catalog that updates without a new release.</li>
+                                    <li>Added receipt and sign scanning: QR codes are decoded in the browser, and otherwise a Groq vision model reads the merchant, total and category. Unknown stores are categorized by an LLM through Supabase Edge Functions.</li>
+                                    <li>Implemented Google sign-in with cross-device sync and in-app account deletion on Supabase (row-level security on every table), plus a welcome demo and a stateless guest mode for signed-out visitors.</li>
+                                    <li>Automated upkeep with GitHub Actions: a monthly job checks every card's issuer page and proposes catalog changes for manual review, and a daily job emails users about statement credits expiring in 3 days through Resend.</li>
+                                    <li>Deployed the Expo web build to Vercel with Sentry error reporting, from a single codebase shared with future iOS and Android targets.</li>
                                 </ul>
                             </div>
                         </li>
